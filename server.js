@@ -1,35 +1,40 @@
-//dependencies
+// Dependencies
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
 import helmet from 'helmet';
 import cors from 'cors';
+import session from 'express-session';
+import connectPgSimple from 'connect-pg-simple';
+import passport from 'passport';
+import { initialize } from './server/passport.config.js';
+import pool from './model/database.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-//Route imports
+// Route imports
 import { userRouter } from './server/users.js';
 import { dashboardRouter } from './server/dashboard.js';
 import { workoutsRouter } from './server/workouts.js';
 import { accountRouter } from './server/account.js';
 
-//server set up
+// Server setup
+const PORT = process.env.PORT || 3001;
 const app = express();
-const port = 3000;
 
 // Required for static pages
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// enabling Helmet middleware
+// Enabling middleware
 app.use(helmet());
-
-// enabling cors middleware
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//Initial .get to check server running.
+// Initial .get to check server running
 app.get('/api/test', (req, res) => {
-    console.log('Recieved request for /api/test')
+    console.log('Received request for /api/test');
     res.send('Hello Kiernan :)');
 });
 
@@ -37,21 +42,40 @@ app.get('/api/test', (req, res) => {
 const buildPath = path.join(__dirname, 'view/build');
 app.use(express.static(buildPath));
 
+// Passport session setup
+initialize(passport);
+app.use(passport.initialize());
+
+const pgSession = connectPgSimple(session);
+const SESS_LIFETIME = process.env.SESS_LIFETIME || 1000 * 60 * 60 * 2; // Default to 2 hours if not set
+
+app.use(
+    session({
+        store: new pgSession({
+            pool: pool,
+        }),
+        name: process.env.SESS_NAME,
+        resave: false,
+        saveUninitialized: false,
+        secret: process.env.SESS_SECRET,
+        cookie: {
+            maxAge: Number(SESS_LIFETIME),
+            secure: process.env.NODE_ENV === 'production',
+            httpOnly: true,
+            sameSite: true,
+        }
+    })
+);
+
+app.use(passport.session());
+
 // API Routes
-// User Route
 app.use('/api/users', userRouter);
-
-// Dashboard Route
 app.use('/api/dashboard', dashboardRouter);
-
-// Workout Route
 app.use('/api/workouts', workoutsRouter);
-
-// Account Route
 app.use('/api/account', accountRouter);
 
-//App is listening on port
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+// App is listening on port
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
-

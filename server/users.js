@@ -1,9 +1,8 @@
 import express from 'express';
+import { registerUser } from '../controllers/users.js';
 
 const userRouter = express.Router();
-userRouter.post('/register', (req, res, next) => {
-    return res.status(200).json({ message: 'This is the register route.' });
-});
+userRouter.post('/register', registerUser);
 userRouter.post('/signin', (req, res, next) => {
     return res.status(200).json({ message: 'This is the signin route.' });
 });
