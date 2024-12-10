@@ -28,7 +28,7 @@ const __dirname = path.dirname(__filename);
 
 // Enabling middleware
 app.use(helmet());
-app.use(cors());
+app.use(cors({ credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -60,7 +60,7 @@ app.use(
         secret: process.env.SESS_SECRET,
         cookie: {
             maxAge: Number(SESS_LIFETIME),
-            secure: process.env.NODE_ENV === 'production',
+            secure: process.env.NODE_ENV === 'production' || false,
             httpOnly: true,
             sameSite: true,
         }

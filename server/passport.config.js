@@ -1,4 +1,5 @@
 import { Strategy as LocalStrategy } from 'passport-local';
+import passport from 'passport';
 import bcrypt from 'bcrypt';
 import pool from '../model/database.js';
 
@@ -34,9 +35,17 @@ function initialize(passport) {
     passport.deserializeUser((id, done) => {
         pool.query('SELECT id, email FROM user_customer WHERE id = $1', [id], (error, result) => {
             if (error) { return done(error); }
-            return done(null, result.rows[0]);
+            return done(null, result.rows[0].id);
         });
     });
 };
 
-export { initialize };
+const isAuth = async (req, res, next) => {
+    if(req.isAuthenticated()) {
+        next();
+    } else {
+        res.status(401).json({ message: 'You are not authorised to view this route.' })
+    }
+}
+
+export { initialize, isAuth };

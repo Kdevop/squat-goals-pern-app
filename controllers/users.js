@@ -36,4 +36,51 @@ const registerUser = async (req, res) => {
     }
 };
 
-export { registerUser };
+const loginUser = async (req, res, next) => {
+    passport.authenticate('local', async (err, user, info) => {
+        if (err) {
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+
+        if (!user) {
+            return res.status(401).json({ message: info.message })
+        }
+        req.login(user, (err) => {
+            if (err) {
+                return res.status(500).json({ error: 'Login failed' });
+            }
+            return res.status(200).json({ user: user.id });
+        });
+    })(req, res, next);
+};
+
+const logoutUser = async (req, res, next) => {
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
+
+        //Destroy the session
+        req.session.destroy((err) => {
+            if (err) {
+                console.error('Error destroying session', err);
+                return next(err);
+            }
+        })
+
+        //Clear the cookie
+        res.clearCookie('sportapp2025', {
+            path: '/',
+            domain: 'localhost',
+        });
+
+        res.status(200).json({ success: true, message: 'Logged out' });
+
+    });
+};
+
+const checkSession = (req, res) => {
+    res.status(200).json({ user: req.session.passport.user })
+};
+
+export { registerUser, logoutUser, loginUser, checkSession };
