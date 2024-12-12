@@ -1,13 +1,9 @@
 import express from 'express';
+import { userDetails, updateDetails } from '../controllers/account.js';
+import { isAuth } from './passport.config.js';
 
 const accountRouter = express.Router();
-accountRouter.get('/:id', (req, res, next) => {
-    const id = req.params.id;
-
-    return res.status(200).json({ message: 'This is the account get route.', id: id });
-});
-accountRouter.post('/update', (req, res, post) => {
-    return res.status(200).json({ message: 'This is the account update route.' });
-});
+accountRouter.get('/:id', isAuth, userDetails);
+accountRouter.post('/update', isAuth, updateDetails);
 
 export { accountRouter };

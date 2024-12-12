@@ -1,11 +1,8 @@
 import express from 'express';
+import { userDashboard } from '../controllers/dashboard.js';
+import { isAuth } from './passport.config.js';
 
 const dashboardRouter = express.Router();
-dashboardRouter.get('/:id', (req, res, next) => {
+dashboardRouter.get('/:id', isAuth, userDashboard);
 
-    const id = req.params.id;
-
-    return res.status(200).json({ message: 'This is the dashboard router.', id: id });
-});
-
-export { dashboardRouter };
+export { dashboardRouter }; 
