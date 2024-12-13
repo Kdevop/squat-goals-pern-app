@@ -1,6 +1,6 @@
 import React from 'react';
 
-function workouts() {
+function Workouts() {
     return (
         <div>
             This is the workouts page.
@@ -8,4 +8,4 @@ function workouts() {
     )
 };
 
-export default workouts;
+export default Workouts;
