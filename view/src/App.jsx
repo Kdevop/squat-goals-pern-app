@@ -1,5 +1,6 @@
 // import dependencies
-import React from 'react';
+// IMPORT STRICT MODE FOR DEV REMOVE FOR PROD.
+import React, { StrictMode } from 'react';
 import './App.css';
 import { RouterProvider, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
@@ -14,25 +15,28 @@ import Workouts from './pages/workouts';
 import Root from './router/index';
 
 // create React Router
-const appRouter=createBrowserRouter(createRoutesFromElements(
-  <Route path='/' element={<Root/>}>
+const appRouter = createBrowserRouter(createRoutesFromElements(
+  <Route path='/' element={<Root />}>
     {/* Public Routes */}
-    <Route index element={<Home/>}/>
-    <Route exact path='/contact' element={<Contact />}/>
-    <Route exact path='/login' element={<Login/>} />
-    <Route exact path='register' element={<Register/>}/>
-    
+    <Route index element={<Home />} />
+    <Route exact path='/contact' element={<Contact />} />
+    <Route exact path='/login' element={<Login />} />
+    <Route exact path='register' element={<Register />} />
+
     {/* Protected Routes */}
-    <Route exact path='/account' element={<Account/>}/>
-    <Route exact path='/workouts' element={<Workouts/>}/>
-    <Route exact path='/dashboard' element={<Dashboard />}/>
+    <Route exact path='/account' element={<Account />} />
+    <Route exact path='/workouts' element={<Workouts />} />
+    <Route exact path='/dashboard' element={<Dashboard />} />
   </Route>
 ))
 
 function App() {
-    return (
+  return (
     <>
-      <RouterProvider router={appRouter}/>
+      {/* Enabling strict mode for Development. Remove for production. */}
+      <React.StrictMode>
+        <RouterProvider router={appRouter} />
+      </React.StrictMode>
     </>
   )
 };

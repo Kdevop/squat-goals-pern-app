@@ -40,6 +40,7 @@ function initialize(passport) {
     });
 };
 
+// Check is user has a session
 const isAuth = async (req, res, next) => {
     if(req.isAuthenticated()) {
         next();

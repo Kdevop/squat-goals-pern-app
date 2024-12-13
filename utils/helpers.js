@@ -1,6 +1,7 @@
 // Helpers for dahsbooard
 
 // helper to calculate calories
+// NOTED LEFT PREVIOUS CODE IN FOR NOW BUT WILL DELETE ONCE TESTED IN BROWSER.
 const calculateCalories = (workout) => {
     //let calories = [];
     const duration = workout.duration;

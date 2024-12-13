@@ -37,10 +37,7 @@ const userDashboard = async (req, res) => {
         return res.status(200).json({ success: true, hasData: result.hasData, message: result.message, data: result.data })
     }
 
-    // DELETE: Early test to retreiving data from the database: DELETE WHEN DONE
-    //return res.status(200).json({success: true, hasData: result.hasData, message: result.message, data: result.data})
-
-    // convert dates in the result data to MM-DD-YYYY format BRING BACK ONCE TEST DONE
+    // convert dates in the result data to MM-DD-YYYY format 
     result.data.forEach(workout => {
         workout.date = convertDate(workout.date);
     });
