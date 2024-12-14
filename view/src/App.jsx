@@ -35,7 +35,9 @@ function App() {
     <>
       {/* Enabling strict mode for Development. Remove for production. */}
       <React.StrictMode>
-        <RouterProvider router={appRouter} />
+        <div className="app-container">
+          <RouterProvider router={appRouter} />
+        </div>
       </React.StrictMode>
     </>
   )

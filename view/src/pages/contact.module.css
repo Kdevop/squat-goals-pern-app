@@ -1,0 +1,4 @@
+/* Added this for now, due to navbar covering the top of the page */
+.container {
+    padding-top: 100px;
+}

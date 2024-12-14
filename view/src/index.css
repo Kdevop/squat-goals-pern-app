@@ -1,4 +1,13 @@
-
+body {
+  margin: 0;
+  /* display: flex;
+  place-items: center; */
+  /* min-width: 320px;
+  min-height: 100vh; */
+  background-color: #000000;
+  font-family: 'Josefin Sans', sans-serif;
+  color: #F6F1F1;
+} 
 
 /* BELOW IS WHAT WAS HERE WHEN APP CREATED. CAN BORROW FROM BUT REMOVE FOR DEV */
 /* :root {

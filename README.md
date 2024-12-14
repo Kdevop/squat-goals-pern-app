@@ -67,6 +67,16 @@ To be added.
 #### Testing checkout
 
 
+
+## Credits
+
+Royalty free images from Unsplash https://unsplash.com/ and Pexcels https://www.pexels.com/.
+
+Inspiration for the idea from GeekforGeeks https://www.youtube.com/@GeeksforGeeksVideos.
+
+
+
+
 <!-- Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh

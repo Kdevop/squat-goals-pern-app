@@ -1,8 +1,10 @@
+// import dependences
 import React from 'react';
+import Styles from './login.module.css';
 
 function Login() {
     return (
-        <div>
+        <div className={Styles.container}>
             This is the login page. 
         </div>
     )

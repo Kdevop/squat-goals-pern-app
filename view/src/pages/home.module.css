@@ -1,0 +1,139 @@
+
+.home {
+    display: flex;
+    justify-content: space-around;
+    /* gap: 180px */
+    padding: 100px 
+}
+
+.logo {
+    height: 450px;
+}
+
+.hero {
+    max-height: 900px;
+}
+
+.navlink {
+    text-decoration: none;
+    color: #000000;
+}
+
+.content {
+    /* display: flex;
+    flex: row; */
+    max-width: 450px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.content p {
+    /* max-width: 450px; */
+    font-size: 26px;
+}
+
+.start1 {
+    background-color: #F6F1F1;
+    width: 300px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.start2 {
+    background-color: #F6F1F1;
+    width: 200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    margin: 0px;
+    
+}
+
+.start3 {
+    background-color: #F6F1F1;
+    width: 200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    margin: 0px;
+    margin-left: auto;
+}
+
+.start1 p {
+    font-size: 26px;
+    margin: 0px;
+    color: #000000;
+}
+
+.csreviews_container {
+    height: 300px;
+    width: 100%;
+    background-color: #146C94;
+}
+
+.ptreviews_container {
+    height: 300px;
+    width: 100%;
+}
+
+.featuresTitle {
+    display: flex;
+    justify-content: space-around;
+}
+
+.featuresTitle p {
+    font-size: 36px;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    gap: 10px;
+}
+
+.features2 {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    gap: 10px;
+    background-color: #146C94;
+} 
+
+.planning {
+    max-width: 440px;
+}
+
+.featuresContent p:nth-child(1) {
+    font-size: 26px;
+}
+
+.featuresContent p:nth-child(2) {
+    max-width: 400px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.featuresContent2 p:nth-child(1) {
+    font-size: 26px;
+    text-align: right;
+}
+
+.featuresContent2 p:nth-child(2) {
+    max-width: 400px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    text-align: right;
+}
+
+.tracking {
+    max-width: 550px;
+}
