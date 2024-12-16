@@ -1,4 +1,20 @@
-/* added this for now so that I can see the page due to navbar */
 .container {
-    padding-top: 100px;
+    margin-top: 100px;
+}
+
+.contentcontainer {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+
+}
+
+.titlecontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-size: 26px;
 }

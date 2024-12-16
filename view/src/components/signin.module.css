@@ -1,0 +1,44 @@
+.signinRight {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.signinRight input {
+    border: none;
+    width: 500px;
+    height: 45px;
+    padding-left: 20px;
+    border-radius: 4px;
+    background: #32323C;
+    color: #A0A0A0;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+}
+
+.signinSumbit {
+    border: none;
+    background-color: #146C94;
+    color: #F6F1F1;
+    font-size: 26px;
+    width: 300px;
+    height: 44px;
+    margin-top: 45px;
+    margin-bottom: 45px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.facebookSumbit {
+    border: none;
+    background-color: #146C94;
+    color: #F6F1F1;
+    font-size: 26px;
+    width: 300px;
+    height: 44px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}

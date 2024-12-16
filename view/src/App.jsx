@@ -21,7 +21,7 @@ const appRouter = createBrowserRouter(createRoutesFromElements(
     <Route index element={<Home />} />
     <Route exact path='/contact' element={<Contact />} />
     <Route exact path='/login' element={<Login />} />
-    <Route exact path='register' element={<Register />} />
+    <Route exact path='/register' element={<Register />} />
 
     {/* Protected Routes */}
     <Route exact path='/account' element={<Account />} />

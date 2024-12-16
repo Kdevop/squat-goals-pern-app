@@ -24,7 +24,7 @@ function Home() {
                         <p>Obtain your own Personal Trainer to take your training to the next level.</p>
                     </div>
                     <div className={Styles.start1}>
-                    <NavLink to='/login' className={Styles.navlink}><p>Get started for free</p></NavLink>
+                    <NavLink to='/register' className={Styles.navlink}><p>Get started for free</p></NavLink>
                     </div>
                 </div>
                 <div>
@@ -49,7 +49,7 @@ function Home() {
                         <p>Enter your planned workouts ahead of time  - know what you are doing that day at the gym to hit your goals.</p>
                     </div>
                     <div className={Styles.start2}>
-                    <NavLink to='/login' className={Styles.navlink}><p>Get started for free</p></NavLink>
+                    <NavLink to='/register' className={Styles.navlink}><p>Get started for free</p></NavLink>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@ function Home() {
                         <p>Track your progress and achievements. See how many calories your are burning and how your workouts breakdown.</p>
                     </div>
                     <div className={Styles.start3}>
-                    <NavLink to='/login' className={Styles.navlink}><p>Get started for free</p></NavLink>
+                    <NavLink to='/register' className={Styles.navlink}><p>Get started for free</p></NavLink>
                     </div>
                 </div>
 
@@ -82,7 +82,7 @@ function Home() {
                             Hit your goals with one of our experts. Select one that suits your goals.</p>
                     </div>
                     <div className={Styles.start2}>
-                    <NavLink to='/login' className={Styles.navlink}><p>Get started for free</p></NavLink>
+                    <NavLink to='/register' className={Styles.navlink}><p>Get started for free</p></NavLink>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@ function Home() {
 
                     </div>
                     <div className={Styles.start3}>
-                    <NavLink to='/login' className={Styles.navlink}><p>Get started for free</p></NavLink>
+                    <NavLink to='/register' className={Styles.navlink}><p>Get started for free</p></NavLink>
                     </div>
                 </div>
 
