@@ -1,11 +1,17 @@
+// import dependencies
 import React from 'react';
+import Styles from './cardstyle.module.css';
 
-function noExercises() {
+function NoExercises(props) {
     return (
-        <div>
-            This is the number of exercises card component.
+        <div className={Styles.cardContainer}>
+            <p className={Styles.title}>Exercises</p>
+            <div className={Styles.contentContainer}>
+                <p>{props.data}</p>
+            </div>
+            <p className={Styles.description}>Total no. of exercises today</p>
         </div>
     )
 };
 
-export default noExercises;
+export default NoExercises;

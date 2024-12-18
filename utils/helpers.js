@@ -17,5 +17,43 @@ const convertDate = (currentDate) => {
     return `${formatDate(date.getMonth() +1)}-${formatDate(date.getDate())}-${date.getFullYear()}`;
 };
 
-export { calculateCalories, convertDate };
+// sort data for Bar chart
+const getDates = () => {
+
+    const dates = [];
+    const today = new Date();
+
+    for (let i = 0; i < 7; i++) {
+        const pastDate = new Date(today);
+        pastDate.setDate(today.getDate() - i);
+        dates.push(convertDate(pastDate));
+    }
+
+    return dates;
+};
+
+export { calculateCalories, convertDate, getDates };
+
+
+
+// notes on function that I need
+// import { convertDate } from './utils/helpers';
+// 
+// const getPastWeekDates = () => {
+//     const dates = [];
+//     const today = new Date();
+// 
+//     for (let i = 0; i < 7; i++) {
+//         const pastDate = new Date(today);
+//         pastDate.setDate(today.getDate() - i);
+//         dates.push(convertDate(pastDate));
+//     }
+// 
+//     return dates;
+// };
+// 
+// // Example usage
+// console.log(getPastWeekDates());
+
+
  

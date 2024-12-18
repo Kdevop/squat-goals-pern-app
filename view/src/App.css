@@ -1,8 +1,9 @@
 .app-container {
   max-width: 2100px;
-  margin: 0 auto; /* Center the container */
+    margin: 0 auto; /* Center the container */
   border: 1px solid #146C94; /*Add a border*/
   background-color: #000000 /* Background color for the app content */
+ 
 }
 
 

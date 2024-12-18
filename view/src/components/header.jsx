@@ -20,7 +20,7 @@ function Header() {
         <div className={Styles.navbar}>
             <div className={Styles.left}>
                 <MenuIcon alt='Menu Icon' className={Styles.navmobopen} />
-                <NavLink exact to='/' className={Styles.logoLink}><img src={logo} alt='Company Logo' className={Styles.logo}/></NavLink>
+                <NavLink to='/' className={Styles.logoLink}><img src={logo} alt='Company Logo' className={Styles.logo}/></NavLink>
                 <ul className={Styles.navmenu}>
                     <li><CloseIcon alt='Close menu icon' className={Styles.navbarclose}/></li>
                     <li><AnchorLink className={`${Styles.anchorlink} ${activeSection === '#home' ? Styles.activeLink : ''}`} href='#home' onClick={() => handleSetActive('#home')}><p>Home</p></AnchorLink></li>

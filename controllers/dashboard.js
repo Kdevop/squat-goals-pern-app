@@ -1,5 +1,5 @@
 import { retrieveDashboard } from "../model/dashboard.js";
-import { calculateCalories, convertDate } from "../utils/helpers.js";
+import { calculateCalories, convertDate,getDates } from "../utils/helpers.js";
 
 const userDashboard = async (req, res) => {
     // get user id from the query params;
@@ -68,13 +68,27 @@ const userDashboard = async (req, res) => {
         acc[workoutDate] += calculateCalories(workout);
         return acc;
     }, {});
-
+    
     // Convert the result to an array of objects with date and total calories
     const caloriesPerDay = Object.entries(caloriesByDate).map(([date, totalCalories]) => ({
         date,
         totalCalories
     }));
 
+    // Array of dates for the past week.
+    const thisWeeksDate = getDates();
+
+    const combinedData = thisWeeksDate.map(date => {
+        const caloriesEntry = caloriesPerDay.find(entry => entry.date === date);
+
+        const totalCalories = caloriesEntry ? caloriesEntry.totalCalories : 0;
+
+        return {
+            date, 
+            totalCalories
+        };
+    });
+    
     // Workout categories over the past week.
     // Calculate total time spent on each category of workout
     const timeByCategory = result.data.reduce((acc, workout) => {
@@ -102,7 +116,7 @@ const userDashboard = async (req, res) => {
         caloriesToday: totalCaloriesToday,
         noWorkouts: NoWorkouts,
         weeklyCalories: totalCaloriesWeek,
-        dailyCalories: caloriesPerDay,
+        dailyCalories: combinedData,
         categoriesByWeek: timePerCategory
     })
 };
