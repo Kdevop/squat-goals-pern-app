@@ -14,21 +14,21 @@ function WeekWorkoutCat(props) {
     console.log(pieChartData);
 
     return (
-        <div>
-            <p>Workout Categories</p>
-            <div className={Styles.pieChartContainer}>
-                <PieChart
-                    series={[
-                        {
-                            data: pieChartData,
-                            innerRadius: 30,
-                            outerRadius: 150,
-                            paddingAngle: 5,
-                            cornerRadius: 5,
-                        }
-                    ]}
-                />
-            </div>
+        <div className={Styles.pieChartContainer}>
+            <p className={Styles.title}>Workout Categories</p>
+            <PieChart
+                series={[
+                    {
+                        data: pieChartData,
+                        innerRadius: 10,
+                        outerRadius: 100,
+                        paddingAngle: 5,
+                        cornerRadius: 5,
+                    }
+                ]}
+                height={300}
+                width={400}
+            />
         </div>
     )
 };

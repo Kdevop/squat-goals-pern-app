@@ -17,8 +17,8 @@ function CalorieBurnDay(props) {
 
     return (
         // render bar chart of calories used each day over the past week.
-        <div>
-            <h2>Weekly Calories Burned</h2>
+        <div className={Styles.container}> 
+            <p className={Styles.title}>Weekly Calories Burned</p>
             <BarChart
                 xAxis={[
                     { scaleType: "band", data: chartData.dates }
@@ -26,8 +26,8 @@ function CalorieBurnDay(props) {
                 series={[
                     { data: chartData.caloriesBurned }
                 ]}
-                height={400}
-                width={600}
+                height={300}
+                width={400}
             />
         </div>
 

@@ -1,8 +1,12 @@
 .pieChartContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px; 
-    width: 600px;
-    overflow: hidden;
+    height: 300px; 
+    border: 3px solid #146C94;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.title {
+    font-size: 20px;
+    color: #146C94;
+    margin: 5px;
 }

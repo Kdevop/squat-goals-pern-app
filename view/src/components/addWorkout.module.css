@@ -1,0 +1,30 @@
+.form_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem;
+}
+
+.sets_reps_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    color: #146C94;
+}
+
+.submit {
+    border: none;
+    background-color: #146C94;
+    color: #F6F1F1;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

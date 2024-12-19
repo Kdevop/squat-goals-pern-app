@@ -1,6 +1,6 @@
 import React from 'react';
 
-function selectDate() {
+function SelectDate() {
     return (
         <div>
             This is the select date component.
@@ -8,4 +8,4 @@ function selectDate() {
     )
 };
 
-export default selectDate;
+export default SelectDate;

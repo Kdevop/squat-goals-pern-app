@@ -159,7 +159,7 @@ const userExercises = [{
     ],
     "message": "Workouts for user and date returned"
 }]
-
+ 
 function Dashboard() {
     return (
         <div className={Styles.mainContainer}>
