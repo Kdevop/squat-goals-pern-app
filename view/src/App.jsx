@@ -30,7 +30,7 @@ const appRouter = createBrowserRouter(createRoutesFromElements(
   </Route>
 ))
 
-function App() {
+function App(props) {
   return (
     <>
       {/* Enabling strict mode for Development. Remove for production. */}
