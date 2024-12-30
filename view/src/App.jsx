@@ -13,6 +13,8 @@ import Login from './pages/login';
 import Register from './pages/register';
 import Workouts from './pages/workouts';
 import Root from './router/index';
+import ProtectedRoute from './router/protectedRoute';
+import AuthRoute from './router/authRoute';
 //import { useDispatch } from 'react-redux';
 //import { setUser } from './store/authSlice';
 
@@ -20,15 +22,15 @@ import Root from './router/index';
 const appRouter = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Root />}>
     {/* Public Routes */}
-    <Route index element={<Home />} />
+    <Route index element={<AuthRoute><Home /></AuthRoute>} />
     <Route exact path='/contact' element={<Contact />} />
-    <Route exact path='/login' element={<Login />} />
-    <Route exact path='/register' element={<Register />} />
+    <Route exact path='/login' element={<AuthRoute><Login /></AuthRoute>} />
+    <Route exact path='/register' element={<AuthRoute><Register /></AuthRoute>} />
 
     {/* Protected Routes */}
-    <Route exact path='/account' element={<Account />} />
-    <Route exact path='/workouts' element={<Workouts />} />
-    <Route exact path='/dashboard' element={<Dashboard />} />
+    <Route exact path='/account' element={<ProtectedRoute><Account /></ProtectedRoute>} />
+    <Route exact path='/workouts' element={<ProtectedRoute><Workouts /></ProtectedRoute>} />
+    <Route exact path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
   </Route>
 ))
 
