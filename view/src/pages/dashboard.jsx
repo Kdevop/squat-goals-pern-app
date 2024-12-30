@@ -1,6 +1,8 @@
 // import dependencies
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Styles from './dashboard.module.css';
+import { dashboardData } from '../../utils';
+import { useDispatch, useSelector } from 'react-redux';
 
 // import components
 // cards for top section of dashboard
@@ -13,182 +15,219 @@ import WeekWorkoutCat from '../components/weekWorkoutCat';
 // exercise card for that days workouts
 import Exercises from '../components/cards/exercises';
 
-// mock data:
-const data = [
-    {
-        "success": true,
-        "hasData": true,
-        "message": "data returned",
-        "caloriesToday": 1900,
-        "noWorkouts": 2,
-        "weeklyCalories": 2950,
-        "dailyCalories": [
-            {
-                "date": "12-09-2024",
-                "totalCalories": 300
-            },
-            {
-                "date": "12-10-2024",
-                "totalCalories": 0
-            },
-            {
-                "date": "12-11-2024",
-                "totalCalories": 750
-            },
-            {
-                "date": "12-12-2024",
-                "totalCalories": 1900
-            },
-            {
-                "date": "12-14-2024",
-                "totalCalories": 0
-            },
-            {
-                "date": "12-15-2024",
-                "totalCalories": 0
-            },
-            {
-                "date": "12-16-2024",
-                "totalCalories": 0
-            }
-        ],
-        "categoriesByWeek": [
-            {
-                "category": "Back",
-                "totalTime": 30
-            },
-            {
-                "category": "Legs",
-                "totalTime": 15
-            },
-            {
-                "category": "Shoulders",
-                "totalTime": 65
-            }
-        ]
-    }
-]
+// import helpers and store (redux)
+import { getFormattedDate } from '../../utils/index.js';
+import { getUserWorkouts, userWorkouts } from '../store/workoutSlice.js';
+import { user } from '../store/authSlice';
 
-const userExercises = [{
-    "success": true,
-    "data": [
-        {
-            "id": 1,
-            "exercise_id": "1",
-            "sets": "3",
-            "reps": "3",
-            "weight": "25",
-            "duration": "30",
-            "user_customer_id": "2",
-            "date": "2024-12-11T00:00:00.000Z",
-            "workout": "Lat Pulldown",
-            "category": "Back"
-        },
-        {
-            "id": 1,
-            "exercise_id": "1",
-            "sets": "3",
-            "reps": "3",
-            "weight": "25",
-            "duration": "30",
-            "user_customer_id": "2",
-            "date": "2024-12-11T00:00:00.000Z",
-            "workout": "Lat Pulldown",
-            "category": "Back"
-        },
-        {
-            "id": 1,
-            "exercise_id": "1",
-            "sets": "3",
-            "reps": "3",
-            "weight": "25",
-            "duration": "30",
-            "user_customer_id": "2",
-            "date": "2024-12-11T00:00:00.000Z",
-            "workout": "Lat Pulldown",
-            "category": "Back"
-        },
-        {
-            "id": 1,
-            "exercise_id": "1",
-            "sets": "3",
-            "reps": "3",
-            "weight": "25",
-            "duration": "30",
-            "user_customer_id": "2",
-            "date": "2024-12-11T00:00:00.000Z",
-            "workout": "Lat Pulldown",
-            "category": "Back"
-        },
-        {
-            "id": 1,
-            "exercise_id": "1",
-            "sets": "3",
-            "reps": "3",
-            "weight": "25",
-            "duration": "30",
-            "user_customer_id": "2",
-            "date": "2024-12-11T00:00:00.000Z",
-            "workout": "Lat Pulldown",
-            "category": "Back"
-        },
-        {
-            "id": 1,
-            "exercise_id": "1",
-            "sets": "3",
-            "reps": "3",
-            "weight": "25",
-            "duration": "30",
-            "user_customer_id": "2",
-            "date": "2024-12-11T00:00:00.000Z",
-            "workout": "Lat Pulldown",
-            "category": "Back"
-        },
-        {
-            "id": 1,
-            "exercise_id": "1",
-            "sets": "3",
-            "reps": "3",
-            "weight": "25",
-            "duration": "30",
-            "user_customer_id": "2",
-            "date": "2024-12-11T00:00:00.000Z",
-            "workout": "Lat Pulldown",
-            "category": "Back"
-        }
-    ],
-    "message": "Workouts for user and date returned"
-}]
- 
+//mock data:
+// const userExercises = [{
+//     "success": true,
+//     "data": [
+//         {
+//             "id": 1,
+//             "exercise_id": "1",
+//             "sets": "3",
+//             "reps": "3",
+//             "weight": "25",
+//             "duration": "30",
+//             "user_customer_id": "2",
+//             "date": "2024-12-11T00:00:00.000Z",
+//             "workout": "Lat Pulldown",
+//             "category": "Back"
+//         },
+//         {
+//             "id": 1,
+//             "exercise_id": "1",
+//             "sets": "3",
+//             "reps": "3",
+//             "weight": "25",
+//             "duration": "30",
+//             "user_customer_id": "2",
+//             "date": "2024-12-11T00:00:00.000Z",
+//             "workout": "Lat Pulldown",
+//             "category": "Back"
+//         },
+//         {
+//             "id": 1,
+//             "exercise_id": "1",
+//             "sets": "3",
+//             "reps": "3",
+//             "weight": "25",
+//             "duration": "30",
+//             "user_customer_id": "2",
+//             "date": "2024-12-11T00:00:00.000Z",
+//             "workout": "Lat Pulldown",
+//             "category": "Back"
+//         },
+//         {
+//             "id": 1,
+//             "exercise_id": "1",
+//             "sets": "3",
+//             "reps": "3",
+//             "weight": "25",
+//             "duration": "30",
+//             "user_customer_id": "2",
+//             "date": "2024-12-11T00:00:00.000Z",
+//             "workout": "Lat Pulldown",
+//             "category": "Back"
+//         },
+//         {
+//             "id": 1,
+//             "exercise_id": "1",
+//             "sets": "3",
+//             "reps": "3",
+//             "weight": "25",
+//             "duration": "30",
+//             "user_customer_id": "2",
+//             "date": "2024-12-11T00:00:00.000Z",
+//             "workout": "Lat Pulldown",
+//             "category": "Back"
+//         },
+//         {
+//             "id": 1,
+//             "exercise_id": "1",
+//             "sets": "3",
+//             "reps": "3",
+//             "weight": "25",
+//             "duration": "30",
+//             "user_customer_id": "2",
+//             "date": "2024-12-11T00:00:00.000Z",
+//             "workout": "Lat Pulldown",
+//             "category": "Back"
+//         },
+//         {
+//             "id": 1,
+//             "exercise_id": "1",
+//             "sets": "3",
+//             "reps": "3",
+//             "weight": "25",
+//             "duration": "30",
+//             "user_customer_id": "2",
+//             "date": "2024-12-11T00:00:00.000Z",
+//             "workout": "Lat Pulldown",
+//             "category": "Back"
+//         }
+//     ],
+//     "message": "Workouts for user and date returned"
+// }]
+
 function Dashboard() {
+    // state for data
+    const [dDataError, setDDataError] = useState(false);
+    const [wDataError, setWDataError] = useState(false);
+    const [dData, setDData] = useState(null);
+    const [wData, setWData] = useState(null);
+
+    // dependencies
+    const dispatch = useDispatch();
+    const id = useSelector(user);
+    const exercises = useSelector(userWorkouts);
+
+    // useEffect to get dashboardData
+    useEffect(() => {
+        const userId = id;
+
+        const fetchData = async () => {
+            try {
+                const data = await dashboardData(userId);
+
+                if (data) {
+                    setDData(data);
+
+                } else {
+                    setDDataError(true);
+                }
+            } catch (error) {
+                console.error('Error fetching data: ', error);
+                setDDataError(true);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    // useEffect to get workouts
+    useEffect(() => {
+        const userId = id;
+
+        const todayDate = getFormattedDate();
+
+        console.log('This is todays date: ', todayDate);
+
+        const details = {
+            date: todayDate,
+            id: userId
+        };
+
+        const fetchData = async () => {
+            try {
+                // const data = 
+                await dispatch(getUserWorkouts(details));
+
+                // if (data) {
+                //     setWData(exercises);
+                //     console.log(wData);
+                // } else {
+                //     setWDataError(true);
+                // }
+            } catch (error) {
+                console.error('Error fetching data for exercises: ', error);
+                setWDataError(true);
+            }
+        }; 
+
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        if(exercises) {
+            setWData(exercises);
+        }
+    },[exercises])
+
     return (
         <div className={Styles.mainContainer}>
             <p className={Styles.title}>Dashboard</p>
-            <div className={Styles.cardContainer}>
-                <CalBurnToday data={data[0].caloriesToday} />
-                <NoExercises data={data[0].noWorkouts} />
-                <CalBurnLW data={data[0].weeklyCalories} />
-            </div>
-            <div className={Styles.dataContainer}>
-                <CalorieBurnDay data={data[0].dailyCalories} />
-                <WeekWorkoutCat data={data[0].categoriesByWeek} />
-            </div>
-            <p className={Styles.title}>Todays Workouts</p>
-            <div className={Styles.exercisesContainer}>
-                {userExercises[0].data.map((exercise, index) => (
-                    <Exercises 
-                        key={index}
-                        category={exercise.category}
-                        exercise={exercise.workout}
-                        sets={exercise.sets}
-                        reps={exercise.reps}
-                        weight={exercise.weight}
-                        duration={exercise.duration}
-                    />
-                ))}
-            </div>
+            {dData ? (
+                <>
+                    <div className={Styles.cardContainer}>
+                        <CalBurnToday data={dData.caloriesToday} />
+                        <NoExercises data={dData.noWorkouts} />
+                        <CalBurnLW data={dData.weeklyCalories} />
+                    </div>
+                    <div className={Styles.dataContainer}>
+                        <CalorieBurnDay data={dData.dailyCalories} />
+                        <WeekWorkoutCat data={dData.categoriesByWeek} />
+                    </div>
+                </>
+            ) : (
+                <div className={Styles.cardContainer}>
+                    <p>Data coming</p>
+                </div>
+            )}
+            <p className={Styles.title}>Today's Workouts</p>
+            {wData ? (
+                <div className={Styles.exercisesContainer}>
+                    {wData.map((exercise) => (
+                        <Exercises
+                            key={exercise.id}
+                            category={exercise.category}
+                            exercise={exercise.workout}
+                            sets={exercise.sets}
+                            reps={exercise.reps}
+                            weight={exercise.weight}
+                            duration={exercise.duration}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <div className={Styles.cardContainer}>
+                    <p>Data coming</p>
+                </div>
+            )}
         </div>
-    )
+    );
 };
 
 export default Dashboard;

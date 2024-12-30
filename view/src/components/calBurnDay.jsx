@@ -13,8 +13,6 @@ function CalorieBurnDay(props) {
         caloriesBurned: props.data.map(entry => entry.totalCalories),
     };
 
-    console.log(chartData);
-
     return (
         // render bar chart of calories used each day over the past week.
         <div className={Styles.container}> 

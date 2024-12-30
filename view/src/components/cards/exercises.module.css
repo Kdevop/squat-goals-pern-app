@@ -10,6 +10,16 @@
     
 }
 
+.headingContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.deleteButton {
+    all: unset;
+    cursor: pointer;
+}
+
 .detailsContainer {
     display: flex;
     justify-content: space-around;

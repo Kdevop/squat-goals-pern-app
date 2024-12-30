@@ -20,6 +20,7 @@ const renderApp = async () => {
     },
   });
 
+
   root.render(
     <StrictMode>
       <Provider store={store}>

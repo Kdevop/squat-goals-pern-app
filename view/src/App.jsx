@@ -1,6 +1,6 @@
 // import dependencies
 // IMPORT STRICT MODE FOR DEV REMOVE FOR PROD.
-import React, { StrictMode } from 'react';
+import React, { StrictMode, useEffect } from 'react';
 import './App.css';
 import { RouterProvider, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
@@ -13,6 +13,8 @@ import Login from './pages/login';
 import Register from './pages/register';
 import Workouts from './pages/workouts';
 import Root from './router/index';
+//import { useDispatch } from 'react-redux';
+//import { setUser } from './store/authSlice';
 
 // create React Router
 const appRouter = createBrowserRouter(createRoutesFromElements(
@@ -30,7 +32,14 @@ const appRouter = createBrowserRouter(createRoutesFromElements(
   </Route>
 ))
 
-function App(props) {
+function App(user) {
+  //const dispatch = useDispatch();
+
+//   useEffect(() => {
+//     dispatch(setUser(user));
+
+// },[dispatch, user])
+
   return (
     <>
       {/* Enabling strict mode for Development. Remove for production. */}

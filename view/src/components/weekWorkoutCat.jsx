@@ -11,8 +11,6 @@ function WeekWorkoutCat(props) {
         label: entry.category,
     }))
 
-    console.log(pieChartData);
-
     return (
         <div className={Styles.pieChartContainer}>
             <p className={Styles.title}>Workout Categories</p>

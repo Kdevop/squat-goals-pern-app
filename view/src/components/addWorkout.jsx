@@ -1,12 +1,28 @@
 // import dependencies
 import React, { useState } from 'react';
 import Styles from './addWorkout.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+
+// import helpers and store(redux)
+import { user } from '../store/authSlice';
+import { addWorkouts } from '../store/workoutSlice.js';
 
 
 function AddWorkout(props) {
+    // site state
     const [selectedCategory, setSelectedCategory] = useState('');
     const [exercises, setExercises] = useState([]);
 
+    // date from props
+    let date = props.date;
+    // format date?
+
+
+    // dependencies
+    const id = useSelector(user);
+    const dispacth = useDispatch();
+
+    // category options
     const categoryOptions = [
         { value: '1', label: 'Back' },
         { value: '2', label: 'Legs' },
@@ -15,14 +31,30 @@ function AddWorkout(props) {
         { value: '5', label: 'Core' }
     ];
 
+    // exercise options against category
     const exerciseOptions = {
-        '1': ['Pull-up', 'Lat Pulldown'],
+        '1': ['Row', 'Lat Pulldown'],
         '2': ['Squat', 'Lunge'],
         '3': ['Shoulder Press', 'Lateral Raise'],
-        '4': ['Bench Press', 'Push-up'],
-        '5': ['Plank', 'Crunch']
+        '4': ['Bench Press', 'Fly'],
+        '5': ['Situp', 'Crunch']
     };
 
+    // Map of exercises against ID's.
+    const exerciseIdMap = {
+        'Lat Pulldown': 1,
+        'Row': 2,
+        'Squat': 3,
+        'Deadlift': 4,
+        'Shoulder Press': 5,
+        'Lateral Raise': 6,
+        'Bench Press': 7,
+        'Fly': 8,
+        'Situp': 9,
+        'Crunch': 10
+    };
+
+    // amend state to update form options based on category selected
     const handleCategoryChange = (event) => {
         const category = event.target.value;
         setSelectedCategory(category);
@@ -32,11 +64,44 @@ function AddWorkout(props) {
     const onSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
+        // get the exercise id from the exercise name
+        const selectedExercise = formData.get('exercise');
+        const exerciseId = exerciseIdMap[selectedExercise];
 
+        console.log('Exercise ID:', exerciseId);
+
+        // create object of form data
+        const formDataObject = {};
         for (let [key, value] of formData.entries()) {
-            console.log(key, value);
+            formDataObject[key] = value;
+        };
+
+        // Prepare the data to be dispatched
+        const updates = {
+            exercise_id: exerciseId,
+            sets: formDataObject.sets,
+            reps: formDataObject.reps,
+            weight: formDataObject.weight,
+            duration: formDataObject.time,
+            user_customer_id: id,
+            date: date
         }
-    }
+
+        console.log(date);
+        console.log(formDataObject);
+        console.log(updates);
+
+        // send request to the store
+        const sendData = async () => {
+            try {
+                await dispacth(addWorkouts(updates));
+            } catch (error) {
+                console.log('Error dispatching addWorkout: ', error);
+            }
+        }
+
+        sendData();
+    };
 
     return (
         <div>
