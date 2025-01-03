@@ -19,7 +19,7 @@ import Exercises from '../components/cards/exercises';
 import { getFormattedDate } from '../../utils/index.js';
 import { getUserWorkouts, userWorkouts } from '../store/workoutSlice.js';
 import { user } from '../store/authSlice';
-
+ 
 //mock data:
 // const userExercises = [{
 //     "success": true,
@@ -121,13 +121,12 @@ function Dashboard() {
 
     // dependencies
     const dispatch = useDispatch();
-    const id = useSelector(user);
+    const userId = useSelector(user);
     const exercises = useSelector(userWorkouts);
 
     // useEffect to get dashboardData
     useEffect(() => {
-        const userId = id;
-
+        
         const fetchData = async () => {
             try {
                 const data = await dashboardData(userId);
@@ -149,8 +148,6 @@ function Dashboard() {
 
     // useEffect to get workouts
     useEffect(() => {
-        const userId = id;
-
         const todayDate = getFormattedDate();
 
         console.log('This is todays date: ', todayDate);

@@ -4,3 +4,13 @@
     background-color: #F6F1F1;
     color: #000000;
 }
+
+.contentcontainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.heading {
+    font-size: 26px;
+    color: #146C94;
+}

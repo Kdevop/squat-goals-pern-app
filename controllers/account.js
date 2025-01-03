@@ -15,7 +15,7 @@ const userDetails = async (req, res) => {
             return res.status(500).json({success: false, data: result});
         }
     
-        return res.status(200).json({success: true, message: result});
+        return res.status(200).json({success: true, message: result.message, data: result.data});
     } 
 }
 

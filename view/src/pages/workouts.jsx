@@ -1,7 +1,6 @@
 // import dependencies
 import React, { useState, useEffect } from 'react';
 import Styles from './workouts.module.css'
-import SelectDate from '../components/selectDate';
 import AddWorkout from '../components/addWorkout';
 import Exercises from '../components/cards/exercises';
 import { DateCalendar } from "@mui/x-date-pickers";

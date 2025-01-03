@@ -1,6 +1,6 @@
 import React from 'react';
 
-function upgradeAccount() {
+function UpgradeAccount() {
     return (
         <div>
             This is the upgrade account component.
@@ -8,4 +8,4 @@ function upgradeAccount() {
     )
 };
 
-export default upgradeAccount;
+export default UpgradeAccount;

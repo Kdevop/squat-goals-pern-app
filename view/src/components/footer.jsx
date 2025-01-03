@@ -5,7 +5,7 @@ function Footer() {
     return (
         <div className={Styles.footerContainer}>
             <div className={Styles.title}>
-                <p>Discalimer</p>
+                <p>Disclaimer</p>
             </div>
             <div className={Styles.content}>
                 <p>This site is a student project with Code Academt through IT Career Switch. All Calculations regarding calroies burned and any data shown are for coding demonstration purposes</p>
