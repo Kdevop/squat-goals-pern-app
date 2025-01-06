@@ -19,10 +19,10 @@ function SignInComp() {
     const onSubmit = async (e) => {
         e.preventDefault();
         const credentials = {
-            username: email, 
+            username: email,
             password: password
         };
-        
+
         if (isEmail(email) && !isEmpty(password)) {
             try {
                 const resultAction = await dispatch(login(credentials));
@@ -49,8 +49,9 @@ function SignInComp() {
         setPassword(e.target.value);
     };
 
-    const facebook = () => {
-        alert('You are trying to sign in with Facebook.');
+    const github = () => {
+        // redirect user to the server endpoint that handle GitHub OAuth flow
+        window.location.href = 'http://localhost:3000/api/users/auth/github';
     };
 
     return (
@@ -63,8 +64,8 @@ function SignInComp() {
                 {error && <div className={Styles.error}>{error}</div>}
                 <button className={Styles.signinSumbit} type='submit'>Submit now</button>
             </form>
-            
-            <button className={Styles.facebookSumbit} type='button' onClick={facebook}>Sign up with Facebook</button>
+
+            <button className={Styles.facebookSumbit} type='button' onClick={github}>Sign up with GitHub</button>
         </div>
     );
 }

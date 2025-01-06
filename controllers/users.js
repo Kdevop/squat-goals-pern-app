@@ -54,6 +54,27 @@ const loginUser = async (req, res, next) => {
     })(req, res, next);
 };
 
+const githubCallback = async (req, res, next) => {
+    passport.authenticate('github', (err, user, info) => {
+        if(err) {
+            console.log('This is the error I am getting', err)
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+
+        if (!user) {
+            return res.status(401).json({ message: 'Authentication failed' });
+        }
+
+        req.login(user, (err) => {
+            if(err) {
+                return res.status(500).json({ error: 'Login failed' });
+            }
+
+            return res.redirect('http://localhost:5173');
+        });
+    })(req, res, next);
+};
+
 const logoutUser = async (req, res, next) => {
     req.logout((err) => {
         if (err) {
@@ -83,4 +104,4 @@ const checkSession = (req, res) => {
     res.status(200).json({ user: req.session.passport.user })
 };
 
-export { registerUser, logoutUser, loginUser, checkSession };
+export { registerUser, logoutUser, loginUser, checkSession, githubCallback };

@@ -2,7 +2,7 @@
 
  export const accountDetails = createAsyncThunk(
     'account/accountDetails', 
-    async (id) => {
+    async (id, {rejectWithValue}) => {
         try {
             const endpoint = `/api/account/${id}`;
             const response = await fetch(endpoint, {
@@ -29,7 +29,7 @@
 
  export const accountUpdate = createAsyncThunk(
     'account/accountUpdate',
-    async (updates) => {
+    async (updates, {rejectWithValue}) => {
         const details = JSON.stringify(updates);
 
         try{

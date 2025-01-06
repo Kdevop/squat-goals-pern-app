@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 // get users workouts workouts
 export const getUserWorkouts = createAsyncThunk(
     'workouts/getUserWorkouts',
-    async (details) => {
+    async (details, {rejectWithValue}) => {
         const { date, id } = details;
         try {
             const endpoint = `/api/workouts/${date}/${id}`;
@@ -25,7 +25,7 @@ export const getUserWorkouts = createAsyncThunk(
             }
         } catch (error) {
             console.error('Error collecting user Workouts: ', error);
-            return rejectedWithValue(error.message);
+            return rejectWithValue(error.message);
         }
     }
 );
@@ -33,7 +33,7 @@ export const getUserWorkouts = createAsyncThunk(
 // need function to add workout
 export const addWorkouts = createAsyncThunk(
     'workouts/addWorkouts',
-    async (updates) => {
+    async (updates, {rejectWithValue}) => {
         const { exercise_id, sets, reps, weight, duration, user_customer_id, date } = updates;
         try {
             const endpoint = `/api/workouts/add`;

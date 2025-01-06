@@ -1,3 +1,7 @@
+// adding the below to testing github oauth login
+import https from 'https';
+https.globalAgent.options.rejectUnauthorized = false;
+
 // Dependencies
 import express from 'express';
 import dotenv from 'dotenv';

@@ -5,7 +5,7 @@ import { PieChart } from '@mui/x-charts';
 
 function WeekWorkoutCat(props) {
 
-    const pieChartData = props.data.map((entry, index) => ({
+    const pieChartData = props.data?.map((entry, index) => ({
         id: index,
         value: entry.totalTime,
         label: entry.category,
@@ -14,7 +14,8 @@ function WeekWorkoutCat(props) {
     return (
         <div className={Styles.pieChartContainer}>
             <p className={Styles.title}>Workout Categories</p>
-            <PieChart
+            {props.data? (
+                <PieChart
                 series={[
                     {
                         data: pieChartData,
@@ -27,6 +28,10 @@ function WeekWorkoutCat(props) {
                 height={300}
                 width={400}
             />
+            ) : (
+                <p>No pie chart data to display</p>
+            )}
+            
         </div>
     )
 };
