@@ -10,8 +10,8 @@ import joingImg from '../assets/joinImage.jpg';
 import { NavLink } from 'react-router-dom';
 
 // Import components
-import CustReviews from '../components/custReviews';
-import PtReviews from '../components/ptReviews';
+import CustReviews from '../components/home/custReviews';
+import PtReviews from '../components/home/ptReviews';
 
 function Home() {
     return (
