@@ -15,8 +15,8 @@ import Workouts from './pages/workouts';
 import Root from './router/index';
 import ProtectedRoute from './router/protectedRoute';
 import AuthRoute from './router/authRoute';
-//import { useDispatch } from 'react-redux';
-//import { setUser } from './store/authSlice';
+//import ErrorPage from './error/errorPage';
+
 
 // create React Router
 const appRouter = createBrowserRouter(createRoutesFromElements(
@@ -31,16 +31,13 @@ const appRouter = createBrowserRouter(createRoutesFromElements(
     <Route exact path='/account' element={<ProtectedRoute><Account /></ProtectedRoute>} />
     <Route exact path='/workouts' element={<ProtectedRoute><Workouts /></ProtectedRoute>} />
     <Route exact path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+
+    {/* Error Route */}
+    {/* <Route exact path='/error' element={<ErrorPage />} /> */}
   </Route>
 ))
 
 function App(user) {
-  //const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     dispatch(setUser(user));
-
-// },[dispatch, user])
 
   return (
     <>

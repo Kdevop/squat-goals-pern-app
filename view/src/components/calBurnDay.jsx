@@ -33,17 +33,6 @@ function CalorieBurnDay(props) {
             )}
 
         </div>
-
-        // <div>
-        //     This is the calories burned per day componenent.
-        //     <div>
-        //         {props.data.map((entry, index) => (
-        //             <p key={index}>
-        //                 Date: {entry.date}, Calories: {entry.totalCalories}
-        //             </p>
-        //         ))}
-        //     </div>
-        // </div>
     );
 };
 

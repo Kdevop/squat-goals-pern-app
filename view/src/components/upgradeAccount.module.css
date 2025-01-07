@@ -1,0 +1,36 @@
+
+.accountContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.stripeButton {
+    border: none;
+    background-color: #146C94;
+    color: #F6F1F1;
+    font-size: 26px;
+    width: 360px;
+    height: 44px;
+    margin-top: 45px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.title {
+    color: #146C94;
+}
+
+.stripeContainer {
+    width: 720px;
+    height: 340px;
+    background-color: #D9D9D9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

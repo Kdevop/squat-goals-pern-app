@@ -1,7 +1,10 @@
 // import dependencies
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import Styles from './personalDetails.module.css';
+import EmailIcon from '@mui/icons-material/Email';
+import PersonIcon from '@mui/icons-material/Person';
+import LockIcon from '@mui/icons-material/Lock';
 
 //import store and functions
 import { user } from '../store/authSlice';
@@ -15,7 +18,7 @@ function PersonalDetails(props) {
     const [showError, setShowError] = useState(false);
     const [formCheck, setFormCheck] = useState(false);
 
-    // dependencies
+    // dependencies 
     const dispatch = useDispatch();
     const id = useSelector(user);
 
@@ -40,13 +43,13 @@ function PersonalDetails(props) {
         }
 
         // create the object to be sent via api
-        if(formCheck()) {
+        if (formCheck()) {
             const updates = Object.entries(values)
-            .filter(([key, value]) => value !== '')
-            .reduce((acc, [key, value]) => {
-                acc[key] = value;
-                return acc;
-            }, {});
+                .filter(([key, value]) => value !== '')
+                .reduce((acc, [key, value]) => {
+                    acc[key] = value;
+                    return acc;
+                }, {});
 
             updates.id = id;
 
@@ -83,23 +86,33 @@ function PersonalDetails(props) {
     return (
         <div>
             <form onSubmit={onSubmit} className={Styles.form}>
-                <label htmlFor='name'>Change Name</label>
-                <input type='text' placeholder={props.name} value={name} name='name' onChange={handleNameChange} />
-                <label htmlFor='email'>Change Email</label>
-                <input type='email' placeholder={props.email} value={email} name='email' onChange={handleEmailChange}/>
-                <label htmlFor='password'>Change Password</label>
-                <input type='password' placeholder='Enter a new password' value={password} name='password' onChange={handlePasswordChange}/>
+                <label htmlFor='name' className={Styles.title}>Change Name</label>
+                <div className={Styles.inputContainer}>
+                    <PersonIcon />
+                    <input type='text' placeholder={props.name} value={name} name='name' onChange={handleNameChange} />
+                </div>
+                <label htmlFor='email' className={Styles.title}>Change Email</label>
+                <div className={Styles.inputContainer}>
+                    <EmailIcon />
+                    <input type='email' placeholder={props.email} value={email} name='email' onChange={handleEmailChange} />
+                </div>
+                <label htmlFor='password' className={Styles.title}>Change Password</label>
+                <div className={Styles.inputContainer}>
+                    <LockIcon />
+                    <input type='password' placeholder='Enter a new password' value={password} name='password' onChange={handlePasswordChange} />
+                </div>
+                
                 {showError ? (
                     <p className={Styles.message}>Error updating details, please try again later</p>
                 ) : (
                     null
                 )}
-                {formCheck? (
+                {formCheck ? (
                     <p className={Styles.message}>Please update a field to submit.</p>
                 ) : (
                     null
                 )}
-                <button type='submit'>Submit</button>
+                <button className={Styles.submit} type='submit'>Submit</button>
             </form>
         </div>
     )

@@ -13,98 +13,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserWorkouts, userWorkouts } from '../store/workoutSlice.js';
 import { user } from '../store/authSlice';
 
-// mock data for exercises
-// const userExercises = [{
-//     "success": true,
-//     "data": [
-//         {
-//             "id": 1,
-//             "exercise_id": "1",
-//             "sets": "3",
-//             "reps": "3",
-//             "weight": "25",
-//             "duration": "30",
-//             "user_customer_id": "2",
-//             "date": "2024-12-11T00:00:00.000Z",
-//             "workout": "Lat Pulldown",
-//             "category": "Back"
-//         },
-//         {
-//             "id": 1,
-//             "exercise_id": "1",
-//             "sets": "3",
-//             "reps": "3",
-//             "weight": "25",
-//             "duration": "30",
-//             "user_customer_id": "2",
-//             "date": "2024-12-11T00:00:00.000Z",
-//             "workout": "Lat Pulldown",
-//             "category": "Back"
-//         },
-//         {
-//             "id": 1,
-//             "exercise_id": "1",
-//             "sets": "3",
-//             "reps": "3",
-//             "weight": "25",
-//             "duration": "30",
-//             "user_customer_id": "2",
-//             "date": "2024-12-11T00:00:00.000Z",
-//             "workout": "Lat Pulldown",
-//             "category": "Back"
-//         },
-//         {
-//             "id": 1,
-//             "exercise_id": "1",
-//             "sets": "3",
-//             "reps": "3",
-//             "weight": "25",
-//             "duration": "30",
-//             "user_customer_id": "2",
-//             "date": "2024-12-11T00:00:00.000Z",
-//             "workout": "Lat Pulldown",
-//             "category": "Back"
-//         },
-//         {
-//             "id": 1,
-//             "exercise_id": "1",
-//             "sets": "3",
-//             "reps": "3",
-//             "weight": "25",
-//             "duration": "30",
-//             "user_customer_id": "2",
-//             "date": "2024-12-11T00:00:00.000Z",
-//             "workout": "Lat Pulldown",
-//             "category": "Back"
-//         },
-//         {
-//             "id": 1,
-//             "exercise_id": "1",
-//             "sets": "3",
-//             "reps": "3",
-//             "weight": "25",
-//             "duration": "30",
-//             "user_customer_id": "2",
-//             "date": "2024-12-11T00:00:00.000Z",
-//             "workout": "Lat Pulldown",
-//             "category": "Back"
-//         },
-//         {
-//             "id": 1,
-//             "exercise_id": "1",
-//             "sets": "3",
-//             "reps": "3",
-//             "weight": "25",
-//             "duration": "30",
-//             "user_customer_id": "2",
-//             "date": "2024-12-11T00:00:00.000Z",
-//             "workout": "Lat Pulldown",
-//             "category": "Back"
-//         }
-//     ],
-//     "message": "Workouts for user and date returned"
-// }]
-
 function Workouts() {
     // state for data
     const [selectedDate, setSelectedDate] = useState(dayjs());
@@ -118,11 +26,7 @@ function Workouts() {
 
     // Handle date change from the calendar
     const handleDateChange = (newDate) => {
-        console.log('old date in state: ', selectedDate);
         setSelectedDate(newDate);
-        console.log('New date: ', newDate);
-        console.log('New date in correct format: ', newDate.format('MM-DD-YYYY'));
-        console.log('Date in state: ', selectedDate.format('MM-DD-YYYY'));
     };
 
     // use effect to dispatch request for user workouts for selected date. 
@@ -138,7 +42,7 @@ function Workouts() {
             try {
 
                 await dispatch(getUserWorkouts(details));
-                
+
             } catch (error) {
                 console.error('Error fetching data for exercises: ', error);
                 setWDataError(true);
@@ -150,13 +54,24 @@ function Workouts() {
 
     // use effect for updating the data in wData when the userWorkouts is updated.
     useEffect(() => {
-        if(exercises) {
+        if (exercises) {
             setWData(exercises);
-            console.log('Here is the the wData: ', wData);
+
         } else {
             setWData(false);
         }
     }, [exercises]);
+
+    if (wDataError) {
+        return (
+            <div className={Styles.mainContainer}>
+                <p className={Styles.title}>Workouts</p>
+                <div>
+                    <p>Sorry there seems to be on error. Please try again later.</p>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className={Styles.mainContainer}>

@@ -19,98 +19,6 @@ import Exercises from '../components/cards/exercises';
 import { getFormattedDate } from '../../utils/index.js';
 import { getUserWorkouts, userWorkouts } from '../store/workoutSlice.js';
 import { user } from '../store/authSlice';
- 
-//mock data:
-// const userExercises = [{
-//     "success": true,
-//     "data": [
-//         {
-//             "id": 1,
-//             "exercise_id": "1",
-//             "sets": "3",
-//             "reps": "3",
-//             "weight": "25",
-//             "duration": "30",
-//             "user_customer_id": "2",
-//             "date": "2024-12-11T00:00:00.000Z",
-//             "workout": "Lat Pulldown",
-//             "category": "Back"
-//         },
-//         {
-//             "id": 1,
-//             "exercise_id": "1",
-//             "sets": "3",
-//             "reps": "3",
-//             "weight": "25",
-//             "duration": "30",
-//             "user_customer_id": "2",
-//             "date": "2024-12-11T00:00:00.000Z",
-//             "workout": "Lat Pulldown",
-//             "category": "Back"
-//         },
-//         {
-//             "id": 1,
-//             "exercise_id": "1",
-//             "sets": "3",
-//             "reps": "3",
-//             "weight": "25",
-//             "duration": "30",
-//             "user_customer_id": "2",
-//             "date": "2024-12-11T00:00:00.000Z",
-//             "workout": "Lat Pulldown",
-//             "category": "Back"
-//         },
-//         {
-//             "id": 1,
-//             "exercise_id": "1",
-//             "sets": "3",
-//             "reps": "3",
-//             "weight": "25",
-//             "duration": "30",
-//             "user_customer_id": "2",
-//             "date": "2024-12-11T00:00:00.000Z",
-//             "workout": "Lat Pulldown",
-//             "category": "Back"
-//         },
-//         {
-//             "id": 1,
-//             "exercise_id": "1",
-//             "sets": "3",
-//             "reps": "3",
-//             "weight": "25",
-//             "duration": "30",
-//             "user_customer_id": "2",
-//             "date": "2024-12-11T00:00:00.000Z",
-//             "workout": "Lat Pulldown",
-//             "category": "Back"
-//         },
-//         {
-//             "id": 1,
-//             "exercise_id": "1",
-//             "sets": "3",
-//             "reps": "3",
-//             "weight": "25",
-//             "duration": "30",
-//             "user_customer_id": "2",
-//             "date": "2024-12-11T00:00:00.000Z",
-//             "workout": "Lat Pulldown",
-//             "category": "Back"
-//         },
-//         {
-//             "id": 1,
-//             "exercise_id": "1",
-//             "sets": "3",
-//             "reps": "3",
-//             "weight": "25",
-//             "duration": "30",
-//             "user_customer_id": "2",
-//             "date": "2024-12-11T00:00:00.000Z",
-//             "workout": "Lat Pulldown",
-//             "category": "Back"
-//         }
-//     ],
-//     "message": "Workouts for user and date returned"
-// }]
 
 function Dashboard() {
     // state for data
@@ -126,7 +34,7 @@ function Dashboard() {
 
     // useEffect to get dashboardData
     useEffect(() => {
-        
+
         const fetchData = async () => {
             try {
                 const data = await dashboardData(userId);
@@ -150,8 +58,6 @@ function Dashboard() {
     useEffect(() => {
         const todayDate = getFormattedDate();
 
-        console.log('This is todays date: ', todayDate);
-
         const details = {
             date: todayDate,
             id: userId
@@ -159,29 +65,33 @@ function Dashboard() {
 
         const fetchData = async () => {
             try {
-                // const data = 
-                await dispatch(getUserWorkouts(details));
 
-                // if (data) {
-                //     setWData(exercises);
-                //     console.log(wData);
-                // } else {
-                //     setWDataError(true);
-                // }
+                await dispatch(getUserWorkouts(details));
             } catch (error) {
                 console.error('Error fetching data for exercises: ', error);
                 setWDataError(true);
             }
-        }; 
+        };
 
         fetchData();
     }, []);
 
     useEffect(() => {
-        if(exercises) {
+        if (exercises) {
             setWData(exercises);
         }
-    },[exercises])
+    }, [exercises])
+
+    if (dDataError || wDataError) {
+        return (
+            <div className={Styles.mainContainer}>
+                <p className={Styles.title}>Dashboard</p>
+                <div>
+                    <p>Sorry there seems to be on error. Please try again later.</p>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className={Styles.mainContainer}>

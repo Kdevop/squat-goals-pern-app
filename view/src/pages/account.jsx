@@ -54,14 +54,14 @@ function Account() {
         if (account) {
             setUserData(account);
         }
-    }, [account]);
+    }, [account]);  
 
     return (
         <div className={Styles.mainContainer}>
-            <p className={Styles.heading}>Your Account</p>
+            <p className={Styles.title}>Your Account</p>
             <div className={Styles.contentcontainer}>
                 <div>
-                    <p className={Styles.title}>Your Details</p>
+                    <p className={Styles.heading}>Your Details</p>
 
                     {userData ? (
                         <PersonalDetails
@@ -71,13 +71,18 @@ function Account() {
                     ) : (
                         <p>Data Loading</p>
                     )}
-
+ 
                 </div>
                 <div>
-                    <p>Div for account details.</p>
+                    <p className={Styles.heading}>Account Details</p>
+                    {userData? (
                     <UpgradeAccount
-                        accountType={data[0].result.data.account}
-                    />
+                    accountType={userData.account}
+                />
+                    ) : (
+                        <p>Data Loading</p>
+                    )}
+
                 </div>
             </div>
         </div>
