@@ -6,7 +6,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Styles from './letsTalk.module.css';
 
 function LetsTalk() {
-    return (
+    return ( 
         <div className={Styles.contactleft}>
             <p>Lets talk</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>

@@ -1,22 +1,38 @@
-/* Added this for now, due to navbar covering the top of the page */
 .container {
-    margin-top: 100px;
+    margin-top: 100px; 
+    padding: 0 20px; 
+    box-sizing: border-box; 
 }
 
 .contentcontainer {
     display: flex;
-    gap: 100px;
+    flex-wrap: wrap; 
+    gap: 2rem; 
     justify-content: center;
-
 }
 
 .titlecontainer {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center; 
 }
 
 .title {
-    font-size: 26px;
+    font-size: 2rem; 
 }
 
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        margin-top: 50px; 
+    }
+
+    .contentcontainer {
+        gap: 1rem; 
+    }
+
+    .title {
+        font-size: 1.5rem; 
+    }
+}

@@ -6,7 +6,7 @@ import { BarChart } from '@mui/x-charts';
 function CalorieBurnDay(props) {
     // Prepare data for the bar chart
     const chartData = {
-        dates: props.data?.map(entry => {
+        dates: props.data?.map(entry => { 
             const [month, day, year] = entry.date.split('-');
             return `${day}-${month}`;
         }),

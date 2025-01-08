@@ -10,8 +10,8 @@ import CalBurnToday from '../components/cards/calBurnToday';
 import NoExercises from '../components/cards/noexercises';
 import CalBurnLW from '../components/cards/calBurnLW';
 // components for bar and pie chart data.
-import CalorieBurnDay from '../components/calBurnDay';
-import WeekWorkoutCat from '../components/weekWorkoutCat';
+import CalorieBurnDay from '../components/dashboard/calBurnDay.jsx';
+import WeekWorkoutCat from '../components/dashboard/weekWorkoutCat.jsx';
 // exercise card for that days workouts
 import Exercises from '../components/cards/exercises';
 

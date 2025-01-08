@@ -3,33 +3,34 @@
     margin: 0 auto;
     background-color: #F6F1F1;
     color: #000000;
+    max-width: 100%;
 }
 
 .exercisesContainer {
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 2rem;
     justify-content: center;
-    padding-bottom: 60px;
+    padding-bottom:  3rem;
 }
 
 .add_date_container {
     display: flex;
     flex-wrap: wrap;
-    gap: 200px;
+    gap: 15rem;
     justify-content: center;
-    padding-bottom: 20px;
+    padding-bottom: 1.25rem;
 }
 
 .heading {
-    font-size: 26px;
+    font-size: 1.625rem;
     color: #146C94;
 }
 
 .title {
-    margin: 5px;
+    margin: 0.3125rem;
     color: #146C94;
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 .add_date_child {
@@ -38,4 +39,30 @@
     border: 3px solid #146C94;
     border-radius: 5px;
     padding: 10px;
+}
+
+@media only screen and (max-width: 1210px) {
+    .add_date_container {
+        gap: 5rem;
+    }
+}
+
+/* Responsive styles for smaller screens */
+@media only screen and (max-width: 768px) {
+    .mainContainer {
+        padding: 50px 20px 0 20px; 
+    }
+
+    .heading {
+        font-size: 1.25rem; 
+    }
+
+    .title {
+        font-size: 1rem; 
+    }
+
+    .add_date_child {
+        width: 100%;
+        max-width: none; 
+    }
 }

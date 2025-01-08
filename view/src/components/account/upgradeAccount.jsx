@@ -21,7 +21,7 @@ function UpgradeAccount(props) {
 
     return (
         <div>
-            <div className={Styles.accountDetails}>
+            <div className={Styles.accountDetails}> 
                 <div className={Styles.accountContainer}>
                     <p className={Styles.title}>Account Type: </p>
                     <p>{account}</p>

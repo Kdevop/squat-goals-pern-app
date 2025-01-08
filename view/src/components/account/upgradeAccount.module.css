@@ -14,7 +14,7 @@
     background-color: #146C94;
     color: #F6F1F1;
     font-size: 26px;
-    width: 360px;
+    width: 360px; 
     height: 44px;
     margin-top: 45px;
     margin-bottom: 10px;
@@ -33,4 +33,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .stripeButton {
+        width: 270px;
+        height: 44px; 
+    }
+
+    .stripeContainer {
+        width: 100%;
+    }
 }

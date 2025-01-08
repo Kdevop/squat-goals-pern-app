@@ -1,4 +1,4 @@
-.registerRight {
+.signinRight {
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -6,7 +6,7 @@
     margin-top: 25px;
 }
 
-.registerRight input {
+.signinRight input {
     border: none;
     width: 500px;
     height: 45px;
@@ -18,7 +18,7 @@
     font-size: 16px;
 }
 
-.registerSumbit {
+.signinSumbit {
     border: none;
     background-color: #146C94;
     color: #F6F1F1;
@@ -41,4 +41,37 @@
     margin-bottom: 20px;
     cursor: pointer;
     transition: 0.3s;
+}
+
+@media only screen and (max-width: 768px) {
+    .signinRight input {
+        font-size: 16px; 
+        width: 100%;
+        max-width: 500px;
+        align-items: center;
+    }
+
+    .signinSumbit, .facebookSumbit {
+        font-size: 22px; 
+        margin-top: 30px; 
+        margin-bottom: 30px;
+    }
+}
+
+/* Media query for mobile phones */
+@media only screen and (max-width: 480px) {
+    .signinRight {
+        margin-top: 15px; 
+    }
+
+    .signinRight input {
+        height: 40px; 
+        font-size: 14px; 
+    }
+
+    .signinSumbit, .facebookSumbit {
+        font-size: 20px; 
+        margin-top: 20px; 
+        margin-bottom: 20px;
+    }
 }

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { isEmpty, isEmail } from 'validator';
 
 // import store and reducers
-import { register } from '../store/authSlice';
+import { register } from '../../store/authSlice';
 
 function RegisterComp() {
     const [email, setEmail] = useState('');

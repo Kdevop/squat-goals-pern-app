@@ -11,7 +11,7 @@
     color: #F6F1F1;
     font-size: 26px;
     width: 270px;
-    height: 44px;
+    height: 44px; 
     margin-top: 45px;
     margin-bottom: 45px;
     cursor: pointer;
@@ -32,4 +32,14 @@
     flex: 1;
     width: 280px;
     height: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+    .submit {
+        width: 100%; 
+    }
+
+    .inputContainer {
+        max-width: 100%; 
+    }
 }

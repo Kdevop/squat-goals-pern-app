@@ -3,12 +3,12 @@ import React from 'react';
 import Styles from './register.module.css';
 
 // import components
-import LetsTalk from '../components/letsTalk';
-import RegisterComp from '../components/registerComp'
+import LetsTalk from '../components/contact_login/letsTalk';
+import RegisterComp from '../components/contact_login/registerComp'
 
 function Register() {
     return (
-        <div className={Styles.container}>
+        <div className={Styles.container}> 
             <div className={Styles.titlecontainer}>
                 <p className={Styles.title}>Sign Up!</p>
             </div>

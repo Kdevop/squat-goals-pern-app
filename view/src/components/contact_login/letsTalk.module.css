@@ -1,0 +1,53 @@
+
+.contactleft {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+}
+
+.contactleft p:nth-child(1) {
+    font-size: 1.625rem;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.contactleft p:nth-child(2) {
+    max-width: 500px;
+}
+
+.contactdetails {
+    display: flex;
+    flex-direction: column;
+    padding-top: 3rem;
+}
+
+.contactdetail {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .contactleft {
+        align-items: center;
+    }
+
+    .contactleft p:nth-child(1) {
+        font-size: 1.25rem; 
+    }
+
+    .contactleft p:nth-child(2) {
+        text-align: center;
+    }
+
+
+    .contactdetails {
+        padding-top: 2rem; 
+    }
+
+    .contactdetail {
+        gap: 1rem; 
+    }
+}

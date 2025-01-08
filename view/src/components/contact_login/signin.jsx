@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { isEmpty, isEmail } from "validator";
 
 // import store and reducers
-import { login } from '../store/authSlice';
+import { login } from '../../store/authSlice';
 
 
 function SignInComp() {

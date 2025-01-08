@@ -1,0 +1,25 @@
+.container {
+    border: 3px solid #146C94;
+    border-radius: 5px;
+    padding: 10px;
+    height: 300px;
+    
+}
+
+.title {
+    font-size: 1.25rem;
+    color: #146C94;
+    margin: 5px;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 8px; 
+        height: auto; 
+    }
+
+    .title {
+        font-size: 1rem; 
+    }
+}

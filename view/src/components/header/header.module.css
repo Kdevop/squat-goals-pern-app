@@ -1,7 +1,7 @@
 /* Base styles for larger screens */
 .navbar {
     width: 100%; 
-    /* max-width: 2100px;  */
+    max-width: 2100px; 
     margin: 0 auto; 
     display: flex;
     justify-content: space-between;
@@ -89,15 +89,13 @@ ul {
 
 /* Responsive styles for smaller screens */
 @media only screen and (max-width: 768px) {
-    .navbar {
-        /* max-width: auto; */
-    }
+
     .navapp {
-        display: none; /* Hide menu by default on mobile */
+        display: none; 
     }
 
     .showMenu {
-        display: flex; /* Show menu when menuOpen is true */
+        display: flex; 
         flex-direction: column;
         width: 100%;
         position: absolute;
@@ -105,7 +103,7 @@ ul {
         padding-left: 0;
         margin-left: -20px;
         align-items: center;
-        margin-top: 200px;
+        margin-top: 220px;
         padding-top: 20px;
     }
 

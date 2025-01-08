@@ -3,10 +3,6 @@
     margin: 0 auto;
     background-color: #F6F1F1;
     color: #000000;
-    /* padding-left: 60px;
-    padding-right: 60px; */
-    /* width: 100%; */
-    /* max-width: 1200px;  */
 }
 
 .title {
@@ -16,9 +12,7 @@
 
 .cardContainer {
     display: flex;
-    /* gap: 100px; */
     justify-content: center;
-    /* justify-content: center; */
     margin: 40px 0;
     gap: 100px;
     flex-wrap: wrap;
@@ -40,4 +34,27 @@
     gap: 50px;
     justify-content: center;
     padding-bottom: 60px;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 1200px) {
+    .mainContainer {
+        padding: 50px 20px 0 20px; 
+    }
+
+    .title {
+        font-size: 22px; 
+    }
+
+    .cardContainer, .dataContainer, .exercisesContainer {
+        gap: 20px;
+    }
+
+    .dataContainer {
+        margin: 40px 0; 
+    }
+
+    .exercisesContainer {
+        padding-bottom: 30px; 
+    }
 }

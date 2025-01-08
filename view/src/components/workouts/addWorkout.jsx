@@ -4,8 +4,8 @@ import Styles from './addWorkout.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 
 // import helpers and store(redux)
-import { user } from '../store/authSlice';
-import { addWorkouts } from '../store/workoutSlice.js';
+import { user } from '../../store/authSlice.js';
+import { addWorkouts } from '../../store/workoutSlice.js';
 
 
 function AddWorkout(props) {

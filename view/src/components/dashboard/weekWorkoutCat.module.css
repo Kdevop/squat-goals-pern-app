@@ -6,7 +6,17 @@
 }
 
 .title {
-    font-size: 20px;
+    font-size: 1.25rem;
     color: #146C94;
     margin: 5px;
+}
+
+@media (max-width: 768px) {
+    .pieChartContainer {
+        padding: 8px; 
+    }
+
+    .title {
+        font-size: 1rem; 
+    }
 }

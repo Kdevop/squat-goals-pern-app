@@ -3,9 +3,8 @@ import React from 'react';
 import Styles from './login.module.css';
 
 // import components
-import LetsTalk from '../components/letsTalk';
-import SignInComp from '../components/signin';
-
+import LetsTalk from '../components/contact_login/letsTalk';
+import SignInComp from '../components/contact_login/signin'; 
 
 function Login() {
     return (

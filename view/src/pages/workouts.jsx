@@ -1,13 +1,13 @@
 // import dependencies
 import React, { useState, useEffect } from 'react';
 import Styles from './workouts.module.css'
-import AddWorkout from '../components/addWorkout';
+import AddWorkout from '../components/workouts/addWorkout.jsx';
 import Exercises from '../components/cards/exercises';
 import { DateCalendar } from "@mui/x-date-pickers";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs from 'dayjs';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'; 
 
 // import helpers and store (redux)
 import { getUserWorkouts, userWorkouts } from '../store/workoutSlice.js';

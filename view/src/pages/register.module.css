@@ -6,7 +6,7 @@
     display: flex;
     gap: 100px;
     justify-content: center;
-
+    flex-wrap: wrap-reverse;
 }
 
 .titlecontainer {
@@ -17,4 +17,26 @@
 
 .title {
     font-size: 26px;
+}
+
+/* Media query for tablets and smaller screens */
+@media (max-width: 768px) {
+    .contentcontainer {
+        gap: 50px; 
+    }
+
+    .title {
+        font-size: 22px; 
+    }
+}
+
+/* Media query for mobile phones */
+@media (max-width: 480px) {
+    .contentcontainer {
+        gap: 20px; 
+    }
+
+    .title {
+        font-size: 18px; 
+    }
 }

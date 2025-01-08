@@ -7,10 +7,10 @@ import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
 
 //import store and functions
-import { user } from '../store/authSlice';
-import { accountUpdate } from '../store/accountSlice';
+import { user } from '../../store/authSlice';
+import { accountUpdate } from '../../store/accountSlice';
 
-function PersonalDetails(props) {
+function PersonalDetails(props) { 
     // state for component
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');

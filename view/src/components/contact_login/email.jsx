@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Styles from './email.module.css';
 
 // NOTES: THIS PAGE NEEDS SOME FORM VALIDATIONS MAKING FIELDS MANDATORY!
-
+ 
 function Email() {
     // state for displaying sent message? Not used atm - to update later. 
     const [sent, setSent] = useState(false);
@@ -38,11 +38,11 @@ function Email() {
     return (
         <div>
             <form onSubmit={onSubmit} className={Styles.contactright}>
-                <label>Your Name</label>
+                <label className={Styles.title}>Your Name</label>
                 <input typle='text' placeholder='Enter Your Name' name='name' />
-                <label>Your Email</label>
+                <label className={Styles.title}>Your Email</label>
                 <input type='text' placeholder='Enter Your Email' name='email' />
-                <label>Write Your Message Here</label>
+                <label className={Styles.title}>Write Your Message Here</label>
                 <textarea name='message' rows='8' placeholder='Enter Your Message'></textarea>
                 <button className={Styles.contactSumbit} type='submit'>Submit now</button>
             </form>

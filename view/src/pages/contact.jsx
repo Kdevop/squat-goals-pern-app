@@ -3,10 +3,10 @@ import React from 'react';
 import Styles from './contact.module.css';
 
 // import components
-import LetsTalk from '../components/letsTalk';
-import Email from '../components/email';
+import LetsTalk from '../components/contact_login/letsTalk';
+import Email from '../components/contact_login/email';
 
-function Contact() {
+function Contact() { 
     return (
         <div className={Styles.container}>
             <div className={Styles.titlecontainer}>

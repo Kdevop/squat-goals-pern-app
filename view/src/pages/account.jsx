@@ -4,8 +4,8 @@ import Styles from './account.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 
 // import components
-import PersonalDetails from '../components/personalDetails';
-import UpgradeAccount from '../components/upgradeAccount';
+import PersonalDetails from '../components/account/personalDetails';
+import UpgradeAccount from '../components/account/upgradeAccount';
 
 // import functions and store
 import { accountDetails, userAccount } from '../store/accountSlice';
@@ -78,7 +78,7 @@ function Account() {
                     {userData? (
                     <UpgradeAccount
                     accountType={userData.account}
-                />
+                    />
                     ) : (
                         <p>Data Loading</p>
                     )}
