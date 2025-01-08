@@ -15,7 +15,10 @@ import Workouts from './pages/workouts';
 import Root from './router/index';
 import ProtectedRoute from './router/protectedRoute';
 import AuthRoute from './router/authRoute';
-//import ErrorPage from './error/errorPage';
+import ErrorPage from './error/errorPage';
+
+// import error boundary
+import ErrorBoundary from './error/utils.jsx';
 
 
 // create React Router
@@ -33,7 +36,7 @@ const appRouter = createBrowserRouter(createRoutesFromElements(
     <Route exact path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
 
     {/* Error Route */}
-    {/* <Route exact path='/error' element={<ErrorPage />} /> */}
+    <Route exact path='/error' element={<ErrorPage />} />
   </Route>
 ))
 
@@ -44,7 +47,9 @@ function App(user) {
       {/* Enabling strict mode for Development. Remove for production. */}
       <React.StrictMode>
         <div className="app-container">
-          <RouterProvider router={appRouter} />
+          <ErrorBoundary>
+            <RouterProvider router={appRouter} />
+          </ErrorBoundary>
         </div>
       </React.StrictMode>
     </>

@@ -4,8 +4,10 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    /* max-width: 1200px;
+    width: 100%; */
 }
-
+ 
 .heading {
     font-size: 26px;
 }
@@ -22,4 +24,21 @@
 
 .logo{
     padding-top: 30px;
+    cursor: pointer;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .mainContainer {
+        padding: 80px 40px 0 40px;
+    }
+
+    .heading {
+        font-size: 22px; 
+        text-align: center;
+    }
+
+    .content p {
+        text-align: center
+    }
 }
