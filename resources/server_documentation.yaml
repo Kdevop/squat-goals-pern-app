@@ -1,0 +1,487 @@
+openapi: 3.0.3
+info:
+  title: Squat Goals API
+  version: 1.0.0
+  description: API design and documentation for Squat Goals Project
+paths:
+  /api/users/register:
+    summary: POST user register with application
+    description: >-
+      This path is used to allow users to register. User details will be
+      instered into the database and the user automatically logged in.
+    post:
+      summary: Registers the user.
+      description: >-
+        Allows the user to register. User details to be added to database and
+        user automatically logged in.
+      operationId: post_register
+      requestBody:
+        description: A new user object
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: The user's email address
+                name: 
+                  type: string
+                  description: The user's name
+                password:
+                  type: string
+                  format: password
+                  description: The user's password
+              required:
+                - email
+                - name
+                - password
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                register:
+                  value: |-
+                    {
+                        "success": true,
+                        "userId": 2
+                    }
+      tags:
+        - Users
+  /api/users/signin:
+    summary: POST allow users to log into account
+    description: >-
+      This route is used to allow users to log into their account and create
+      session using Passport Local strategy.
+    post:
+      summary: Sign user into application.
+      description: >-
+        This route will check details provided in the request against those held
+        in the database, if successful a passport local session will be created
+        and the user returned along with a session cookie. 
+      operationId: post_signin
+      requestBody:
+        description: User login credentials
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: The user's email address
+                password:
+                  type: string
+                  format: password
+                  description: The user's password
+              required:
+                - email
+                - password
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                login:
+                  value: |-
+                    {
+                        "user": 2
+                    }
+      tags:
+        - Users
+  /api/users/oauth:
+    summary: O-Auth2 login via 3rd party
+    description: >-
+      This route will enable users to login in using 3rd party credentials using
+      passport google strategy.
+    post:
+      summary: Github Oauth login
+      description: >-
+        Allow user to log into application using 3rd party credentials. If
+        successful, a session will be created and the user returned to
+        application along with a session cookie.
+      operationId: post_oauth
+      responses:
+        '302':
+          description: Redirects to GitHub for authentication
+          headers:
+            Location:
+              description: URL to redirect the user to GitHub's OAuth login page
+              schema:
+                type: string
+
+  /auth/github/callback:
+    get:
+      summary: GitHub OAuth callback
+      description: Handles the callback from GitHub after user authentication.
+      responses:
+        '200':
+          description: User authenticated successfully and redirected to the application
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '401':
+          description: Unauthorized, authentication failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+      tags:
+        - Users
+  /api/users/logout:
+    summary: POST enable users to log out of account.
+    description: >-
+      This route will able users to log out of their account. The session will
+      be deleted and the cookie destroyed. 
+    post:
+      summary: Allow users to log out of application.
+      description: Deletes session and cookie based on credentials provided in request.
+      operationId: post_logout
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                logout:
+                  value: |-
+                    {
+                        "success": true,
+                        "message": "Logged out"
+                    }
+      tags:
+        - Users
+  /api/users/session:
+    summary: GET session details to confirm user is logged in.
+    description: >-
+      This route is used to confirm that the user has a session based on the
+      session cookie and credentials in the header of the request. 
+    get:
+      summary: Get session details based on credentials send in header.
+      description: >-
+        Request will send any credentials from session cookie set in browser and
+        return user detais.
+      operationId: get_session
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                session:
+                  value: |-
+                    {
+                        "user": 2
+                    }
+      tags:
+        - Users
+  /api/dashboard/:id:
+    summary: GET user dashboard data.
+    description: >-
+      This route is used to retrieve the data for the user dashboard based on
+      the ID provided in the query parameters. The ID and credentials will be
+      checked to confirm logged in and user has access. 
+    get:
+      summary: Get user dashboard details.
+      description: >-
+        This will return the user dashboard details based on the user ID
+        provided in the query parameters and credentials provided in the header.
+      operationId: get_dashboard
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                dashboard:
+                  value: |-
+                    {
+                        "success": true,
+                        "hasData": true,
+                        "message": "data returned",
+                        "caloriesToday": 1900,
+                        "noWorkouts": 2,
+                        "weeklyCalories": 2950,
+                        "dailyCalories": [
+                            {
+                                "date": "12-11-2024",
+                                "totalCalories": 750
+                            },
+                            {
+                                "date": "12-09-2024",
+                                "totalCalories": 300
+                            },
+                            {
+                                "date": "12-12-2024",
+                                "totalCalories": 1900
+                            }
+                        ],
+                        "categoriesByWeek": [
+                            {
+                                "category": "Back",
+                                "totalTime": 30
+                            },
+                            {
+                                "category": "Legs",
+                                "totalTime": 15
+                            },
+                            {
+                                "category": "Shoulders",
+                                "totalTime": 65
+                            }
+                        ]
+                    }
+      tags:
+        - Dashboard
+  /api/workouts/:date/:id:
+    summary: GET all of the user workouts for a date.
+    description: >-
+      This route will get all of the user workouts for set date based on the
+      date and id query params. The ID and credentials will be checked to
+      confirm logged on and user has access.
+    get:
+      summary: Get user workouts for set day.
+      description: >-
+        Get user workouts for set day based on 1st query parameter for date and
+        second query parameter for user user ID. Credentials to be incuded in
+        header and checked using passport local strategy.
+      operationId: get_workouts
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                get_workouts:
+                  value: |-
+                    {
+                        "success": true,
+                        "data": [
+                            {
+                                "id": 1,
+                                "exercise_id": "1",
+                                "sets": "3",
+                                "reps": "3",
+                                "weight": "25",
+                                "duration": "30",
+                                "user_customer_id": "2",
+                                "date": "2025-12-11T00:00:00.000Z"
+                            },
+                            {
+                                "id": 2,
+                                "exercise_id": "5",
+                                "sets": "3",
+                                "reps": "3",
+                                "weight": "25",
+                                "duration": "30",
+                                "user_customer_id": "2",
+                                "date": "2025-12-11T00:00:00.000Z"
+                            }
+                        ],
+                        "message": "Workouts for user and date returned"
+                    }
+      tags:
+        - Workout
+  /api/workouts/add:
+    summary: POST for user to add workout to calendar.
+    description: >-
+      This route will be used be the user to add a workout to the calendar on a
+      specific date. Credentials will be checked to ensure access.
+    post:
+      summary: Add workout to calendar
+      description: >-
+        Add workout to calendar for a user with user ID provided in the body of 
+        the request.
+      operationId: post_workouts
+      requestBody:
+        description: A new workout object
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                exercise_id:
+                  type: integer
+                  description: ID for the exercise
+                duration:
+                  type: integer
+                  description: Duration of the workout in minutes
+                date:
+                  type: string
+                  format: date
+                  description: The date of the workout
+                sets:
+                  type: integer
+                  description: Number of sets for exercise
+                reps: 
+                  type: integer
+                  description: Number of reps for exercise
+                user_id: 
+                  type: integer
+                  description: ID of user
+              required:
+                - exercise_id
+                - duration
+                - date
+                - sets
+                - reps
+                - user_id
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                add_workout:
+                  value: |-
+                    {
+                        "success": true,
+                        "message": "Workout added to calendar",
+                        "data": {
+                            "id": 3,
+                            "exercise_id": "5",
+                            "sets": "3",
+                            "reps": "3",
+                            "weight": "25",
+                            "duration": "30",
+                            "user_customer_id": "2",
+                            "date": "2025-12-12T00:00:00.000Z"
+                        }
+                    }
+      tags:
+        - Workout
+  /api/workouts/delete/:id:
+    summary: DELETE a user workout.
+    description: >-
+      This route will be used by user to delete a specific workout from their
+      calendar. Workout ID to be included in query params. Credentials will be
+      checked to ensure access. 
+    delete:
+      summary: Allow user to delete workout from calendar.
+      description: >-
+        Allow user to delete workout from calendar. Workout ID to be included in
+        query params and credentials checked to ensure logged in. 
+      operationId: delete_workout
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                delete_workout:
+                  value: |-
+                    {
+                        "success": true,
+                        "message": "workouts removed"
+                    }
+      tags:
+        - Workout
+  /api/account/:id:
+    summary: GET user account details.
+    description: >-
+      This route is used to retrieve all user account details. Credentials will
+      be checked to ensure access. 
+    get:
+      summary: Get user account details.
+      description: >-
+        Retrieve account details based on user ID provided in query params and
+        credentials provided in request.
+      operationId: get_account
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                account details:
+                  value: |-
+                    {
+                        "result": {
+                            "error": false,
+                            "data": {
+                                "id": 2,
+                                "email": "test@example.com",
+                                "account": false,
+                                "name": "Test User"
+                            }
+                        }
+                    }
+      tags:
+        - Account
+  /api/account/update:
+    summary: PUT request to update user details
+    description: >-
+      This request will update user account details. Credentials to be included
+      in the header and id checked against credentials to confirm access. 
+    post:
+      summary: Update user account details.
+      description: >-
+        Allow user to update their account details based on user ID provided
+        the  body of request along with details to be updated. Credentials to
+        be  provided in header and checked to confirm access. 
+      operationId: put_account
+      requestBody:
+        description: User account update object
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id: 
+                  type: integer
+                  description: ID of user
+                email:
+                  type: string
+                  format: email
+                  description: The user's new email address
+                password:
+                  type: string
+                  format: email
+                  description: The user's new password
+              required:
+                - id
+      responses:
+        default:
+          description: Default error sample response
+          content:
+            application/json:
+              examples:
+                account_update:
+                  value: |-
+                    {
+                        "success": true,
+                        "message": "Details updated",
+                        "data": {
+                            "id": 2,
+                            "email": "test@test.com",
+                            "name": "test"
+                        }
+                    }
+      tags:
+        - Account
