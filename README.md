@@ -53,7 +53,6 @@ In this project, you’ll be coming up with your own topic for a final project. 
 ![ERD](resources/database_design.png)
 
 #### Excalidraw
-- Document to be opened @ excalidraw.com
 ![Download Excalidraw Plan] (resources/squat_goals_whiteboard.excalidraw)
 
 #### Wireframe
