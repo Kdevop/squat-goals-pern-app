@@ -1,7 +1,4 @@
 # Portfolio Project - Full-Stack Sports App
-
-THIS SITE IS CURRENTLY UNDER DEVELOPMENT.
-
 This sports Pern app is a Codecademy Portfolio Project implemented using Node.js, Express.js for the backend, Postgres SQL for the database. 
 
 Frontend is implemented using HTNL, CSS, Javascript, React and Redux.
@@ -22,62 +19,68 @@ In this project, you’ll be coming up with your own topic for a final project. 
 ## Features
 
 #### Users
-Details on user features to be added.
+- User register and login.
+- User authentication completed with Passport.js
+- Crud operations on User
 
 #### Dashboard
-Details on Dashboard to be added.
+- User statistics and workout route for selected date. 
+- UI showing bar chart and pie chart for data visualisation.
 
 #### Workouts
-Details on workouts to be added.
+- Crud operations on user workouts
+- User can and a delete a workout for selected date.
+- Updated workouts feed the dashboard.
 
-#### Personal Trainers
-Details on personal trainers to be added.
+#### Security
+- User authentication and authorization
+- Hashing of password using bcypt and salt
+- Parameterized queries to protect against SQL injection
+- Input validation and sanitizer to protect againt XSS attacks
 
 ## Technologies
 - HTML
-- CDD
+- CSS
 - React
 - Redux
 - PostgresSQL
 - Node.js
 - Express.js
 
-
 ## Documents
 
 #### ERD
-To be added.
+![ERD](resources/database_design.png)
 
 #### Excalidraw
-To be added.
+- Document to be opened @ excalidraw.com
+![Download Excalidraw Plan] (resources/squat_goals_whiteboard.excalidraw)
+
+#### Wireframe
+![Wireframe](resources/squat-goals_wireframe.png)
 
 #### Link to porject plan
-To be added.
+[Project Plan](https://github.com/users/Kdevop/projects/5/views/2)
 
 ## Build Instructions
 
 #### Install dependencies
+In the product directory, run > npm install
 
-##  Start Command
+## Start Command
+npm run launch
 
 ## Site Demo
 
 #### Demo User Credentials
 
-#### Testing checkout
-
-
+## Upcoming improvement
+- AI chatbot
+- Payment route
+- User roles updates
 
 ## Credits
 
 Royalty free images from Unsplash https://unsplash.com/ and Pexcels https://www.pexels.com/.
 
 Inspiration for the idea from GeekforGeeks https://www.youtube.com/@GeeksforGeeksVideos.
-
-
-
-
-<!-- Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh -->
