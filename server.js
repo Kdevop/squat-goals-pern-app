@@ -30,20 +30,19 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Fallback to index.html for SPA routing
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  });
+
 // Enabling middleware
 app.use(helmet());
 app.use(cors({ credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Initial .get to check server running
-app.get('/api/test', (req, res) => {
-    console.log('Received request for /api/test');
-    res.send('Hello Kiernan :)');
-});
-
 // Serve static files
-const buildPath = path.join(__dirname, 'view/build');
+const buildPath = path.join(__dirname, 'dist');
 app.use(express.static(buildPath));
 
 // Passport session setup
