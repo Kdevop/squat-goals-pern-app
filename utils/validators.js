@@ -20,7 +20,7 @@ const registrationValidationRules = [
 
 const dashboardValidationsRules = [
     param('id').isInt().withMessage('User ID must be an integer.')
-]
+];
 
 const checkValidationDashboard = (req, res, next) => {
     const errors = validationResult(req);
@@ -28,7 +28,7 @@ const checkValidationDashboard = (req, res, next) => {
         return res.status(400).json({ success: false, errors: errors.array() });
     }
     next();
-}
+};
 
 const addWorkoutValidationRules = [
     body('exercise_id').isInt().withMessage('Exercise ID must be an integer'),
@@ -59,7 +59,7 @@ const validateUpdateDetails = [
     body('email').optional().isEmail().withMessage('Invalid email format'),
     body('name').optional().isString().withMessage('Name must be a string'),
     body('password').optional().trim().isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
-]
+];
 
 // written for workouts, but might be able to use elsewhere. Will check as we move through. Can replace the one for dashboard.
 const checkValidations = (req, res, next) => {
@@ -68,7 +68,7 @@ const checkValidations = (req, res, next) => {
         return res.status(400).json({ success: false, errors: errors.array() });
     }
     next();
-}
+};
 
 export { 
     checkValidationRegistration, 
@@ -81,5 +81,5 @@ export {
     validateDeleteWorkouts,
     validateUserDetails,
     validateUpdateDetails
-}
+};
 
