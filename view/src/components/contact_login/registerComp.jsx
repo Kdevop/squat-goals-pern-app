@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import Styles from './registerComp.module.css';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { isEmpty, isEmail } from 'validator';
+import { isEmpty, isEmail, isLength } from 'validator';
 
 // import store and reducers
 import { register } from '../../store/authSlice';
@@ -25,7 +25,7 @@ function RegisterComp() {
              name: name
         };
 
-        if(isEmail(email) && !isEmpty(password) && !isEmpty(name)) {
+        if(isEmail(email) && !isEmpty(password) && !isEmpty(name) && isLength(password, { min: 6 })) {
             try{
                 const resultAction = await dispatch(register(credentials));
 
@@ -39,13 +39,14 @@ function RegisterComp() {
                 console.error('Failed to register please try again')
             }
         } else {
-            setError('Please enter a valid email, name and password.')
+            setError('Please enter a valid email, name and password with at least 6 characters.')
         }
     };
 
-    const facebook = () => {
-        alert('You are trying to join with facebook.')
-    }
+    const github = () => {
+        // redirect user to the server endpoint that handle GitHub OAuth flow
+        window.location.href = 'http://localhost:3000/api/users/auth/github';
+    };
 
     const handleNameChange = (e) => {
         setName(e.target.value);
@@ -68,12 +69,10 @@ function RegisterComp() {
                 <input type='email' placeholder='Enter Your Email' name='registerEmail' value={email} onChange={handleEmailChange}/>
                 <label htmlFor='registerPassword'>Your Password</label>
                 <input type='password' placeholder='Enter A Password' name='registerPassword' value={password} onChange={handlePasswordChange} />
-                {/* <label>Confirm Password</label>
-                <input type='text' placeholder='Confirm Password' name='confpassword' /> */}
                 {error && <div className={Styles.error}>{error}</div>}
                 <button className={Styles.registerSumbit} type='submit'>Submit now</button>
             </form>
-             <button className={Styles.facebookSumbit} type='button' onClick={facebook}>Sign up with Facebook</button>
+             <button className={Styles.facebookSumbit} type='button' onClick={github}>Sign up with Github</button>
         </div>
     )
 };

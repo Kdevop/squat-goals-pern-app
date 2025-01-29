@@ -4,11 +4,11 @@ THIS SITE IS CURRENTLY UNDER DEVELOPMENT.
 
 This sports Pern app is a Codecademy Portfolio Project implemented using Node.js, Express.js for the backend, Postgres SQL for the database. 
 
-Frontend is implemented using HTNL, CSS, Javascript, react and redux.
+Frontend is implemented using HTNL, CSS, Javascript, React and Redux.
 
 ## Project Goal:
 
-In this project, you’ll be coming up with your own topic for a final project. This is your chance to bring together everything that you have learned so far to showcase your skills. Given that you’ll be coming up with the idea as well as building the web app, make sure to give yourself plenty of time - we recommend at least two weeks to a month, depending on how much time you can work on it each day.
+In this project, you’ll be coming up with your own topic for a final project. This is your chance to bring together everything that you have learned so far to showcase your skills. 
 
 ## Project Objectives:
 

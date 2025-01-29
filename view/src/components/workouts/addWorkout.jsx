@@ -10,13 +10,11 @@ import { addWorkouts } from '../../store/workoutSlice.js';
 
 function AddWorkout(props) {
     // site state
-    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState(''); 
     const [exercises, setExercises] = useState([]);
 
     // date from props
     let date = props.date;
-    // format date?
-
 
     // dependencies
     const id = useSelector(user);
@@ -86,10 +84,6 @@ function AddWorkout(props) {
             user_customer_id: id,
             date: date
         }
-
-        console.log(date);
-        console.log(formDataObject);
-        console.log(updates);
 
         // send request to the store
         const sendData = async () => {

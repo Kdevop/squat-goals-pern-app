@@ -13,6 +13,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserWorkouts, userWorkouts } from '../store/workoutSlice.js';
 import { user } from '../store/authSlice';
 
+// function to format date
+const formatDate = (date) => {
+    return dayjs(date).format('YYYY-MM-DD');
+};
+
 function Workouts() {
     // state for data
     const [selectedDate, setSelectedDate] = useState(dayjs());
@@ -32,9 +37,10 @@ function Workouts() {
     // use effect to dispatch request for user workouts for selected date. 
     useEffect(() => {
         const userId = id;
+        const formattedDate = formatDate(selectedDate)
 
         const details = {
-            date: selectedDate,
+            date: formattedDate,
             id: userId
         };
 

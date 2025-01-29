@@ -19,7 +19,7 @@ const userDetails = async (req, res) => {
     } 
 }
 
-const updateDetails = async (req, res) => {
+const updateDetails = async (req, res) => { 
 
     //get details from the body of the request
     let changes = req.body;

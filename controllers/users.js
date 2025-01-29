@@ -75,7 +75,7 @@ const githubCallback = async (req, res, next) => {
     })(req, res, next);
 };
 
-const logoutUser = async (req, res, next) => {
+const logoutUser = async (req, res, next) => { 
     req.logout((err) => {
         if (err) {
             return next(err);

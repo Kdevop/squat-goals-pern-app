@@ -5,6 +5,7 @@ import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import TimelapseIcon from '@mui/icons-material/Timelapse';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSelector, useDispatch } from 'react-redux';
+import dayjs from 'dayjs';
 
 // import functions from utilities
 import { removeWorkout } from '../../../utils';
@@ -13,6 +14,10 @@ import { removeWorkout } from '../../../utils';
 import { user } from '../../store/authSlice';
 import { getUserWorkouts } from '../../store/workoutSlice';
 
+// function to format date
+const formatDate = (date) => {
+    return dayjs(date).format('YYYY-MM-DD');
+};
 
 function Exercises(props) {
   // dependencies
@@ -26,12 +31,13 @@ function Exercises(props) {
     };
 
     const date = props.date;
+    const formattedDate = formatDate(date)
 
     const response = await removeWorkout(toDelete);
 
     if (response.success) {
       const details = {
-        date: date,
+        date: formattedDate,
         id: id,
       };
 
