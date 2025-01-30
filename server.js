@@ -30,11 +30,6 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Fallback to index.html for SPA routing
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-  });
-
 // Enabling middleware
 app.use(helmet());
 app.use(cors({ credentials: true }));
@@ -42,8 +37,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files
-const buildPath = path.join(__dirname, 'dist');
+const buildPath = path.join(__dirname, 'view', 'build');
 app.use(express.static(buildPath));
+
+// Fallback to index.html for SPA routing
+app.get('*', (req, res) => {
+    res.sendFile(path.join(buildPath, 'index.html'));
+  });
 
 // Passport session setup
 initialize(passport);
@@ -62,7 +62,7 @@ app.use(
         saveUninitialized: false,
         secret: process.env.SESS_SECRET,
         cookie: {
-            maxAge: Number(SESS_LIFETIME),
+            maxAge: Number(SESS_LIFETIME), 
             secure: process.env.NODE_ENV === 'production' || false,
             httpOnly: true,
             sameSite: true,
