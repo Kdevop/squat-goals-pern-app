@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "start": "node server.js",
     "test": "vitest --config vite.test.config.js",
-    "launch": "concurrently \"npm run dev\" \"npm start\""
+    "launch": "npm run build && serve -s view/build"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
