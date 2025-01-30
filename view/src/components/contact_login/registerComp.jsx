@@ -30,7 +30,6 @@ function RegisterComp() {
                 const resultAction = await dispatch(register(credentials));
 
                 if(register.fulfilled.match(resultAction)) {
-                    alert('Success');
                     navigate('/dashboard');
                 } else {
                     setError('User already exists.')

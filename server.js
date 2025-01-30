@@ -63,9 +63,9 @@ app.use(
         secret: process.env.SESS_SECRET,
         cookie: {
             maxAge: Number(SESS_LIFETIME), 
-            secure: process.env.NODE_ENV === 'production' || false,
+            secure: true,
             httpOnly: true,
-            sameSite: true,
+            sameSite: 'strict',
         }
     })
 );

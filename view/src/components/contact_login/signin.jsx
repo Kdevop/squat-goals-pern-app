@@ -27,8 +27,7 @@ function SignInComp() {
             try {
                 const resultAction = await dispatch(login(credentials));
                 if (login.fulfilled.match(resultAction)) {
-                    alert('Success');
-                    navigate('/dashboard'); // Example navigation after successful login
+                    navigate('/dashboard'); 
                 } else {
                     setError('Email / password wrong. Please try again.');
                 }
