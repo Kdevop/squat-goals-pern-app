@@ -37,7 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files
-const buildPath = path.join(__dirname, 'view', 'build');
+const buildPath = path.join(__dirname, 'view/build');
 app.use(express.static(buildPath));
 
 // Fallback to index.html for SPA routing
