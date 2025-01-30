@@ -32,7 +32,7 @@ const __dirname = path.dirname(__filename);
 
 // Enabling middleware
 app.use(helmet());
-app.use(cors({ credentials: true }));
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -40,17 +40,13 @@ app.use(express.urlencoded({ extended: true }));
 const buildPath = path.join(__dirname, 'view/build');
 app.use(express.static(buildPath));
 
-// Fallback to index.html for SPA routing
-app.get('*', (req, res) => {
-    res.sendFile(path.join(buildPath, 'index.html'));
-  });
-
 // Passport session setup
 initialize(passport);
 app.use(passport.initialize());
 
 const pgSession = connectPgSimple(session);
 //const SESS_LIFETIME = process.env.SESS_LIFETIME || 1000 * 60 * 60 * 2; // Default to 2 hours if not set
+// Number(process.env.SESS_LIFETIME)
 
 app.use(
     session({
@@ -62,7 +58,7 @@ app.use(
         saveUninitialized: false,
         secret: process.env.SESS_SECRET,
         cookie: {
-            maxAge: Number(process.env.SESS_LIFETIME), 
+            maxAge: 1000*60*60*24, 
             secure: true,
             httpOnly: true,
             sameSite: 'none',
