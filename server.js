@@ -65,7 +65,7 @@ app.use(
             maxAge: Number(SESS_LIFETIME), 
             secure: true,
             httpOnly: true,
-            sameSite: 'strict',
+            sameSite: 'none',
         }
     })
 );
