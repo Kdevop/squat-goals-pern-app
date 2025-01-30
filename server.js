@@ -32,7 +32,7 @@ const __dirname = path.dirname(__filename);
 
 // Enabling middleware
 app.use(helmet());
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ origin: 'https://squat-goals-pern-app.onrender.com', credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -62,6 +62,7 @@ app.use(
             secure: true,
             httpOnly: true,
             sameSite: 'none',
+            domain: "squat-goals-pern-app.onrender.com",
         }
     })
 );
