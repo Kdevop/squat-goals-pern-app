@@ -62,7 +62,7 @@ app.use(
         saveUninitialized: false,
         secret: process.env.SESS_SECRET,
         cookie: {
-            maxAge: Number(SESS_LIFETIME), 
+            maxAge: Number(process.env.SESS_LIFETIME), 
             secure: true,
             httpOnly: true,
             sameSite: 'none',
