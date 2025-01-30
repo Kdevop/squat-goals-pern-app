@@ -50,7 +50,7 @@ initialize(passport);
 app.use(passport.initialize());
 
 const pgSession = connectPgSimple(session);
-const SESS_LIFETIME = process.env.SESS_LIFETIME || 1000 * 60 * 60 * 2; // Default to 2 hours if not set
+//const SESS_LIFETIME = process.env.SESS_LIFETIME || 1000 * 60 * 60 * 2; // Default to 2 hours if not set
 
 app.use(
     session({
