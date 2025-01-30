@@ -78,6 +78,11 @@ app.use('/api/dashboard', dashboardRouter);
 app.use('/api/workouts', workoutsRouter);
 app.use('/api/account', accountRouter);
 
+// Fallback to index.html for client-side routing
+app.get('*', (req, res) => {
+    res.sendFile(path.join(buildPath, 'index.html'));
+});
+
 // App is listening on port
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
