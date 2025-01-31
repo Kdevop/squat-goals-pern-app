@@ -9,7 +9,7 @@ function Footer() {
             </div>
             <div className={Styles.content}>
                 <p>This site is a student project with Code Academt through IT Career Switch. All Calculations regarding calroies burned and any data shown are for coding demonstration purposes</p>
-                <p>All data sotored in this site will be deleted by xxxxxxxx</p>
+                <p>All data sotored in this site will be deleted by 28th February 2025</p>
                 <br />
                 <p>You can view more of my work here: Portfolio SITE TO BE ADDDED. </p>
             </div>

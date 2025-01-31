@@ -57,7 +57,7 @@ const loginUser = async (req, res, next) => {
 const githubCallback = async (req, res, next) => {
     passport.authenticate('github', (err, user, info) => {
         if(err) {
-            console.log('This is the error I am getting', err)
+            console.log('Authentication error', err)
             return res.status(500).json({ error: 'Internal server error' });
         }
 
@@ -70,7 +70,7 @@ const githubCallback = async (req, res, next) => {
                 return res.status(500).json({ error: 'Login failed' });
             }
 
-            return res.redirect('http://localhost:5173');
+            return res.redirect('https://squat-goals-pern-app.onrender.com/');
         });
     })(req, res, next);
 };

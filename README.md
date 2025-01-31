@@ -70,6 +70,8 @@ In the product directory, run > npm install
 npm run launch
 
 ## Site Demo
+User Name: someone@email.com
+Password: passwordforuser
 
 #### Demo User Credentials
 
@@ -77,6 +79,7 @@ npm run launch
 - AI chatbot
 - Payment route
 - User roles updates
+- Improvements to responsive design for mobile
 
 ## Credits
 

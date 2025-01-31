@@ -30,13 +30,13 @@ function initialize(passport) {
             }
         }
     ));
-
+ 
     //github strategy
     passport.use(new GitHubStrategy({
         // properties
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackURL: 'http://localhost:3000/api/users/auth/github/callback',
+        callbackURL: 'https://squat-goals-pern-app.onrender.com/api/users/auth/github/callback',
         scope: ['user:email', 'read:user'],
     },
         async (accessToken, refreshToken, profile, done) => {

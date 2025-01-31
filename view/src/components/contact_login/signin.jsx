@@ -50,7 +50,7 @@ function SignInComp() {
 
     const github = () => {
         // redirect user to the server endpoint that handle GitHub OAuth flow
-        window.location.href = 'http://localhost:3000/api/users/auth/github';
+        window.location.href = 'https://squat-goals-pern-app.onrender.com/api/users/auth/github';
     };
 
     return (
