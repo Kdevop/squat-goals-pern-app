@@ -30,9 +30,11 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.set('trust proxy', 1);
+
 // Enabling middleware
 app.use(helmet());
-app.use(cors({ origin: 'https://squat-goals-pern-app.onrender.com', credentials: true }));
+app.use(cors({ origin: 'squat-goals-pern-app.onrender.com', credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -62,7 +64,7 @@ app.use(
             secure: true,
             httpOnly: true,
             sameSite: 'lax',
-            domain: "https://squat-goals-pern-app.onrender.com",
+            domain: "squat-goals-pern-app.onrender.com",
         }
     })
 );
