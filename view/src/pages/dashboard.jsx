@@ -30,7 +30,7 @@ function Dashboard() {
     // dependencies
     const dispatch = useDispatch();
     const userId = useSelector(user);
-    const exercises = useSelector(userWorkouts);
+    const exercises = useSelector(userWorkouts); 
 
     // useEffect to get dashboardData
     useEffect(() => {
