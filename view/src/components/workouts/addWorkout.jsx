@@ -32,7 +32,7 @@ function AddWorkout(props) {
     // exercise options against category
     const exerciseOptions = {
         '1': ['Row', 'Lat Pulldown'],
-        '2': ['Squat', 'Lunge'],
+        '2': ['Squat', 'Deadlift'],
         '3': ['Shoulder Press', 'Lateral Raise'],
         '4': ['Bench Press', 'Fly'],
         '5': ['Situp', 'Crunch']
