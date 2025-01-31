@@ -61,8 +61,8 @@ app.use(
             maxAge: 1000*60*60*24, 
             secure: true,
             httpOnly: true,
-            sameSite: 'none',
-            domain: "squat-goals-pern-app.onrender.com",
+            sameSite: 'lax',
+            domain: "https://squat-goals-pern-app.onrender.com",
         }
     })
 );
