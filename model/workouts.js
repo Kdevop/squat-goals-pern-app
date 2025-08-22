@@ -7,13 +7,13 @@ const userWorkouts = async (updates) => {
 
     // Query for inserting new workouts to the database
     const insertQuery = `
-        INSERT INTO user_workouts (exercise_id, sets, reps, weight, duration, user_customer_id, date)
+        INSERT INTO user_worksouts (exercise_id, sets, reps, weight, duration, user_customer_id, date)
         VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
 
     // Query for fetching all user workouts for date and id
     const fetchQuery = `
         SELECT uw.*, e.workout, wt.category
-        FROM user_workouts uw
+        FROM user_worksouts uw
         JOIN exercise e ON uw.exercise_id = e.id
         JOIN workout_type wt ON e.workout_type_id = wt.id
         WHERE uw.user_customer_id = $1
@@ -67,7 +67,7 @@ const workouts = async (date, id) => {
 
 const removeWorkout = async (id, userId) => {
     // query for databse
-    const query = `DELETE FROM user_workouts WHERE id = $1 AND user_customer_id = $2`;
+    const query = `DELETE FROM user_worksouts WHERE id = $1 AND user_customer_id = $2`;
 
     // query the database
     try{

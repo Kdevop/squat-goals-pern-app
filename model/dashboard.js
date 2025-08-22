@@ -3,7 +3,7 @@ import pool from '../model/database.js';
 const retrieveDashboard = async (id, today, weekPrior) => {
     // query the database
     const query = `SELECT uw.*, e.workout, wt.category, wt.id AS category_id
-        FROM user_workouts uw
+        FROM user_worksouts uw
         JOIN exercise e ON uw.exercise_id = e.id
         JOIN workout_type wt ON e.workout_type_id = wt.id
         WHERE uw.user_customer_id = $1
