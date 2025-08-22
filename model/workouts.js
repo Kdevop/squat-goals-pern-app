@@ -7,7 +7,7 @@ const userWorkouts = async (updates) => {
 
     // Query for inserting new workouts to the database
     const insertQuery = `
-        INSERT INTO user_worksouts (exercise_id, sets, reps, weight, duration, user_customer_id, date)
+        INSERT INTO user_worksouts (exercise_id, sets, reps, weight, duration(mins), user_customer_id, date)
         VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
 
     // Query for fetching all user workouts for date and id
