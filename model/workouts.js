@@ -42,7 +42,7 @@ const userWorkouts = async (updates) => {
 const workouts = async (date, id) => {
     // query for database
     const query = `SELECT uw.*, e.workout, wt.category
-        FROM user_workouts uw
+        FROM user_worksouts uw
         JOIN exercise e ON uw.exercise_id = e.id
         JOIN workout_type wt ON e.workout_type_id = wt.id
         WHERE uw.user_customer_id = $1
