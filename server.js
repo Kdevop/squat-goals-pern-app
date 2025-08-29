@@ -48,45 +48,45 @@ app.use(passport.initialize());
 
 const pgSession = connectPgSimple(session);
 // dont need the below once this is launched into render?
-//const SESS_LIFETIME = process.env.SESS_LIFETIME || 1000 * 60 * 60 * 2; // Default to 2 hours if not set
+const SESS_LIFETIME = process.env.SESS_LIFETIME || 1000 * 60 * 60 * 2; // Default to 2 hours if not set
 // Number(process.env.SESS_LIFETIME)
 
 app.use(
-    session({
-        store: new pgSession({
-            pool: pool,
-        }),
-        name: process.env.SESS_NAME,
-        resave: false,
-        saveUninitialized: false,
-        secret: process.env.SESS_SECRET,
-        cookie: {
-            maxAge: 1000 * 60 * 60 * 24,
-            secure: true,
-            httpOnly: true,
-            sameSite: 'lax',
-            domain: "squat-goals-pern-app.onrender.com",
-        }
-    })
+session({
+    store: new pgSession({
+        pool: pool,
+    }),
+    name: process.env.SESS_NAME,
+    resave: false,
+    saveUninitialized: false,
+    secret: process.env.SESS_SECRET,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24,
+        secure: true,
+        httpOnly: true,
+        sameSite: 'lax',
+        domain: "squat-goals-pern-app.onrender.com",
+    }
+})
 );
 
 // previous session set up for render. Changed the above for local testing in prep for reluanch. 
 
-// session({
-//     store: new pgSession({
-//         pool: pool,
-//     }),
-//     name: process.env.SESS_NAME,
-//     resave: false,
-//     saveUninitialized: false,
-//     secret: process.env.SESS_SECRET,
-//     cookie: {
-//         maxAge: Number(SESS_LIFETIME),
-//         secure: process.env.NODE_ENV === 'production' || false,
-//         httpOnly: true,
-//         sameSite: true,
-//     }
-// })
+    // session({
+    //     store: new pgSession({
+    //         pool: pool,
+    //     }),
+    //     name: process.env.SESS_NAME,
+    //     resave: false,
+    //     saveUninitialized: false,
+    //     secret: process.env.SESS_SECRET,
+    //     cookie: {
+    //         maxAge: Number(SESS_LIFETIME),
+    //         secure: process.env.NODE_ENV === 'production' || false,
+    //         httpOnly: true,
+    //         sameSite: true,
+    //     }
+    // })
 
 app.use(passport.session());
 

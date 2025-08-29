@@ -63,7 +63,7 @@ function Header() {
                             <li><NavLink to='/' className={Styles.contact}>Home Page</NavLink></li>
                             <li><NavLink to='/dashboard' className={`${Styles.anchorlink} ${activeDisplay === '#dashboard' ? Styles.activeLink : ''}`} onClick={() => handleSetDisplay('#dashboard')}>Dashboard</NavLink></li>
                             <li><NavLink to='/workouts' className={`${Styles.anchorlink} ${activeDisplay === '#workouts' ? Styles.activeLink : ''}`} onClick={() => handleSetDisplay('#workouts')}>Workouts</NavLink></li>
-                            <li><NavLink to='/' className={`${Styles.anchorlink} ${activeDisplay === '#pts' ? Styles.activeLink : ''}`} onClick={() => handleSetDisplay('#pts')}>Personal Trainers</NavLink></li>
+                            {/* <li><NavLink to='/' className={`${Styles.anchorlink} ${activeDisplay === '#pts' ? Styles.activeLink : ''}`} onClick={() => handleSetDisplay('#pts')}>Personal Trainers</NavLink></li> */}
                             <li><NavLink to='/account' className={`${Styles.anchorlink} ${activeDisplay === '#account' ? Styles.activeLink : ''}`} onClick={() => handleSetDisplay('#account')}>Account</NavLink></li>
                             <li><NavLink to='/contact' className={Styles.contact}>Contact</NavLink></li>
                         </>
@@ -82,11 +82,11 @@ function Header() {
             </div>
             <div >
                 <ul className={Styles.right}>
-                    <li><NavLink to='/contact' className={Styles.navlink1} activeClassName={Styles.activeLink}>Contact</NavLink></li>
+                    <li><NavLink to='/contact' className={Styles.navlink1} activeclassname={Styles.activeLink}>Contact</NavLink></li>
                     {isLoggedIn ? (
-                        <li><NavLink to='/' className={Styles.navlink2} activeClassName={Styles.activeLink} onClick={userLogout}>Sign Out</NavLink></li>
+                        <li><NavLink to='/' className={Styles.navlink2} activeclassname={Styles.activeLink} onClick={userLogout}>Sign Out</NavLink></li>
                     ) : (
-                        <li><NavLink to='/login' className={Styles.navlink2} activeClassName={Styles.activeLink}>Sign In</NavLink></li>
+                        <li><NavLink to='/login' className={Styles.navlink2} activeclassname={Styles.activeLink}>Sign In</NavLink></li>
                     )}
                 </ul>
             </div>

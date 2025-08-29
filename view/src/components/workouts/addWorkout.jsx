@@ -98,7 +98,7 @@ function AddWorkout(props) {
     };
 
     return (
-        <div>
+        <div className={Styles.container}>
             <form className={Styles.form_container} onSubmit={onSubmit}>
                 <div className={Styles.item_container}>
                     <label htmlFor="category">Category</label>

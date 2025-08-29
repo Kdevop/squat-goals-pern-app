@@ -16,10 +16,13 @@ import { getUserWorkouts } from '../../store/workoutSlice';
 
 // function to format date
 const formatDate = (date) => {
-    return dayjs(date).format('YYYY-MM-DD');
+  return dayjs(date).format('YYYY-MM-DD');
 };
 
 function Exercises(props) {
+
+  const {getDashboardData} = props;
+
   // dependencies
   const id = useSelector(user);
   const dispatch = useDispatch();
@@ -42,7 +45,11 @@ function Exercises(props) {
       };
 
       await dispatch(getUserWorkouts(details));
+
     }
+
+    getDashboardData();
+
   };
 
   return (

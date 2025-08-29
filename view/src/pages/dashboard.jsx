@@ -30,26 +30,27 @@ function Dashboard() {
     // dependencies
     const dispatch = useDispatch();
     const userId = useSelector(user);
-    const exercises = useSelector(userWorkouts); 
+    const exercises = useSelector(userWorkouts);
+    
+
+    const fetchData = async () => {
+        try {
+            const data = await dashboardData(userId);
+
+            if (data) {
+                setDData(data);
+
+            } else {
+                setDDataError(true);
+            }
+        } catch (error) {
+            console.error('Error fetching data: ', error);
+            setDDataError(true);
+        }
+    };
 
     // useEffect to get dashboardData
     useEffect(() => {
-
-        const fetchData = async () => {
-            try {
-                const data = await dashboardData(userId);
-
-                if (data) {
-                    setDData(data);
-
-                } else {
-                    setDDataError(true);
-                }
-            } catch (error) {
-                console.error('Error fetching data: ', error);
-                setDDataError(true);
-            }
-        };
 
         fetchData();
     }, []);
@@ -119,18 +120,20 @@ function Dashboard() {
                     {wData.map((exercise) => (
                         <Exercises
                             key={exercise.id}
+                            id={exercise.id}
                             category={exercise.category}
                             exercise={exercise.workout}
                             sets={exercise.sets}
                             reps={exercise.reps}
                             weight={exercise.weight}
                             duration={exercise.duration}
+                            getDashboardData={fetchData}
                         />
                     ))}
                 </div>
             ) : (
                 <div className={Styles.cardContainer}>
-                    <p>Data coming</p>
+                    <p>No exercises planned for selected date.</p>
                 </div>
             )}
         </div>
