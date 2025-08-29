@@ -58,8 +58,10 @@ In this project, you’ll be coming up with your own topic for a final project. 
 #### Wireframe
 ![Wireframe](resources/squat-goals_wireframe.png)
 
-#### Link to porject plan
+#### Link to project plan
 [Project Plan](https://github.com/users/Kdevop/projects/5/views/2)
+
+Please note the above will need to be opened on excalidraw.com. Please download the file from resources and visit there site.
 
 ## Build Instructions
 
